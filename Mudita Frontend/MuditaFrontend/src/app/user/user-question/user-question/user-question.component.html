@@ -1,0 +1,50 @@
+
+            <p-table #dt [value]="Questions" [rows]="8" [paginator]="true"
+             [rowHover]="true" dataKey="id"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [showCurrentPageReport]="true">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th class="text-center">Question Name</th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-Question>
+                    <tr>
+                        <td>{{Question.ques_Desc}}<br><p-tag severity="info"  value="{{Question.jobCat_Desc}}" [rounded]="true"></p-tag></td>
+                        <td class="btn-control">
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
+                                (click)="editProduct(Question)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                                (click)="deleteProduct($event,Question)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{Questions ? Questions.length : 0 }} Questions.
+                    </div>
+                </ng-template>
+            </p-table>
+<p-dialog [contentStyle]="{'overflow':'visible'}" header="Question Edit" [(visible)]="QuestionsDialog"
+    [style]="{width: '40vw'}" [baseZIndex]="1030">
+
+    <div styleclass="col-lg-12 col-md-12">
+        <span for="autocomplete">Your Designation</span>
+        <p-dropdown [options]="allJobCat" optionValue="jobCat_Id" [editable]="true"
+            [(ngModel)]="Question.jobCat_Id" name="jobcat" optionLabel="jobCat_Desc"
+            placeholder="Select Tilte " ></p-dropdown>
+    </div>
+    <div class="p-field">
+        <label for="description">Description</label>
+        <textarea id="description" pInputTextarea [(ngModel)]="Question.ques_Desc" required rows="3" cols="20"></textarea>
+    </div>
+
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct(Question)"></button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmPopup></p-confirmPopup>

@@ -1,0 +1,173 @@
+<div class="AM">
+  <!-- <div class="img">
+    <img src="../../assets/questions2.png">
+  </div> -->
+  <!-- <img src="../../assets/questions2.png"> -->
+  <div class="container">
+    <div class="row">
+      <h3 class="title">Interview Questions</h3>
+      <div class="col-lg-9">
+        <div class="card maincard">
+          <div class="col-md-12">
+            <div class="card-body card1">
+              <section class="search-sec">
+                <div class="container">
+                  <form action="#" method="post" novalidate="novalidate">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="row row1">
+                          <div class="col-md-8">
+                            <input type="text" class="input-search form-control search-slt" id="jobCat" #jobCat
+                              name="jobCatNames" placeholder="Job Category" list="jobCatNames" [(ngModel)]="jobname"
+                              (input)="searchJobCat(jobname)" />
+
+                            <datalist id="jobCatNames">
+                              <option *ngFor="let jobcat of allJobCat" [value]="jobcat.jobCat_Desc">
+                                {{ jobcat.jobCat_Desc }}
+                              </option>
+                            </datalist>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <button type="button" class="btn btn-primary btnQuestion" data-bs-toggle="modal"
+                              data-bs-target="#exampleModal">
+                              Add A Question
+                              <i class="bi bi-question-circle"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3">
+        <div class="card sec_card">
+          <div class="col-md-12">
+            <div class="card-body card2">
+              <div class="collection-sort">
+                <select class="select-option form-control con" #mySelect (change)="sortData(mySelect.value)"
+                  name="date">
+                  <option class hidden value="" disabled selected>
+                    <span class="fa fa-sort" aria-hidden="true">Sort By Date</span>
+                  </option>
+                  <option value="asc">From Oldest</option>
+                  <option value="desc">From Newest</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row rowX">
+      <div class="col-lg-12">
+        <div class="card maincard">
+          <!-- paginate:{ itemsPerPage:8, currentPage:cp } -->
+          <div class="col-md-12" *ngFor="let allQuestion of allQues | paginate: {itemsPerPage: 6, currentPage: cp }">
+            <div class="card-body card1">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h6 class="mb-0">{{ allQuestion.ques_Desc }}</h6>
+                </div>
+                <div class="row rowY">
+                  <div class="col-sm-8 text-secondary">
+                    <span class="badge bg-secondary">{{
+                      allQuestion.jobCat_Desc
+                      }}</span> &nbsp;&nbsp;
+                    <span class="badge bg-secondary">{{
+                      allQuestion.createOn | date
+                      }}</span>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="row rowZ">
+
+                      <div class="col-sm-6">
+                        <div class="radiosize">
+                          <button class="like" (click)="React(allQuestion.ques_Id,mySelect.value)"
+                          [disabled]="allQuestion.general==false?false:allQuestion.like" value="true" name="state"
+                          placeholder="state"  #mySelect>
+                            <i class="far fa-thumbs-up"></i>
+                          </button>
+                          <!-- <div class="rating">
+                            <label for="happy2">
+                              <input [(ngModel)]="reaction.like" class="happy" class="form-check-input" type="radio" />
+                              <svg viewBox="0 0 24 24">
+                                <path
+                                  d="M5,9V21H1V9H5M9,21A2,2 0 0,1 7,19V9C7,8.45 7.22,7.95 7.59,7.59L14.17,1L15.23,2.06C15.5,2.33 15.67,2.7 15.67,3.11L15.64,3.43L14.69,8H21C22.11,8 23,8.9 23,10V12C23,12.26 22.95,12.5 22.86,12.73L19.84,19.78C19.54,20.5 18.83,21 18,21H9M9,19H18.03L21,12V10H12.21L13.34,4.68L9,9.03V19Z" />
+                              </svg>
+                            </label>
+                        </div> -->
+                        &nbsp;&nbsp; {{ allQuestion.numOfVote }}
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="radiosize">
+                        <button class="dislike" (click)="React(allQuestion.ques_Id,mySelect2.value)"
+                          [disabled]="allQuestion.general==false?false:allQuestion.dislike" value="false" name="state"
+                          placeholder="state" #mySelect2>
+                          <i class="far fa-thumbs-down"></i>
+                        </button>
+                        &nbsp;&nbsp;&nbsp;{{ allQuestion.reports }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+        </div>
+
+        <pagination-controls (pageChange)="cp=$event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Please Enter Your Question:
+        </h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-danger">
+        <input type="text" class="input-search form-control search-slt" id="jobCat" #jobCat name="jobCatNames"
+          placeholder="Job Category" list="jobCatNames" [(ngModel)]="addQues.jobCat_Desc" />
+
+        <datalist id="jobCatNames">
+          <option *ngFor="let jobcat of allJobCat" [value]="jobcat.jobCat_Id">
+            {{ jobcat.jobCat_Desc }}
+          </option>
+        </datalist>
+        <textarea id="story" name="story" placeholder="Enter text" rows="5" cols="56" [(ngModel)]="addQues.ques_Desc">
+        </textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btnSubmit" data-bs-dismiss="modal" (click)="addNewQues()">
+          Submit
+        </button>
+        <button type="button" class="btn btnClose" data-bs-dismiss="modal">
+          close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

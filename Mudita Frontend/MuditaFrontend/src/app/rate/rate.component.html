@@ -1,0 +1,21 @@
+<div class="container">
+    <form #rate="ngForm" novalidate>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Salary Rate</h3>
+                <h3>Service Rate</h3>
+                <h3>WorkEnviroment Rate</h3>
+                <h3>SafteyRate</h3>
+            </div>
+            <div class="col-md-6">
+                <p-rating name="salrate" #salrate="ngModel" [(ngModel)]="salrate" (cancel)="false"></p-rating>
+                <p-rating name="serrate" #serrate="ngModel" [(ngModel)]="serrate" (cancel)="false"></p-rating>
+                <p-rating name="wrate" #wrate="ngModel" [(ngModel)]="wrate" (cancel)="false"></p-rating>
+                <p-rating name="safrate" #safrate="ngModel" [(ngModel)]="safrate" (cancel)="false"></p-rating>
+            </div>
+        </div>
+        <h3>Review</h3>
+        <textarea pInputTextarea></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</div>

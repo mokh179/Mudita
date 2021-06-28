@@ -1,0 +1,78 @@
+<nav *ngIf="nav.visible" class="navbar navbar-expand-lg fixed-top navbar-light">
+  <div class="container">
+    <a routerLinkActive="active" routerLink="/home"><img src="../../assets/project logo.png" width="90" height="85" alt="logo"></a>
+
+
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+
+
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home">Home</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/searchcompare">Compare</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/viewjobs">All Jobs</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/interviewques">Interview Questions</a>
+        </li>
+        <!-- for company only -->
+        <li class="nav-item" routerLinkActive="active" *ngIf="Editable==true">
+          <a class="nav-link" routerLink="/company/companyprofile/{{companyId}}">Company</a>
+        </li>
+
+
+
+        <li class="nav-item" routerLinkActive="active" >
+          <a class="nav-link" routerLink="/companies">All Companies</a>
+        </li>
+        <!-- for Admin only -->
+        <li class="nav-item" routerLinkActive="active" *ngIf="Admin==true">
+          <a class="nav-link" routerLink="/Dashboard">Dashboard</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/aboutus">About Us</a>
+        </li>
+
+
+      </ul>
+
+      <button Login class="btn btn-primary px-4 py-2 me-3" (click)="login()" *ngIf="!isLoggedIn">Login </button>
+      <!-- <button class="btn btn-primary px-4 py-2 me-3" (click)="logout()" *ngIf="isLoggedIn">Logout </button> -->
+      <button Sign class="btn btn-primary px-4 py-2 me-3" (click)="signup()" *ngIf="!isLoggedIn">Sign Up </button>
+    </div>
+
+
+      <a  *ngIf="isLoggedIn" class="usertitle" routerLinkActive="active"  id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+      aria-expanded="false">{{username}}</a>
+      <ul class="dropdown-menu " aria-labelledby="navbarDropdown"  >
+        <li routerLinkActive="active" ><a class="dropdown-item" routerLink="/user/{{username}}">My Profile</a></li>
+        <li routerLinkActive="active" *ngIf="Admin==true"><a class="dropdown-item" routerLink="/register/admin">Add New Admin</a></li>
+        <li routerLinkActive="active" *ngIf="Admin==false"><a class="dropdown-item" routerLink="/user/{{username}}/vacancy">Applied Vacancies</a></li>
+        <li routerLinkActive="active"><a class="dropdown-item" routerLink="/#" (click)="logout()" *ngIf="isLoggedIn">Sign out</a></li>
+      </ul>
+
+    <div class="our-team" *ngIf="isLoggedIn">
+    <div class="picture">
+      <a routerLinkActive="active" routerLink="/user/{{username}}" ><img class="img-fluid" [src]="photos">
+      </a>
+      </div>
+</div>
+  </div>
+</nav>

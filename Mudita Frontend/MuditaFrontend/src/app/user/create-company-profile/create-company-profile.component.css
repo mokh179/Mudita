@@ -1,0 +1,70 @@
+.container {
+    margin-top: 90px;
+    margin-top: 100px;
+
+  }
+
+p-card{
+padding-top: 500px;
+}
+.btn-primary {
+  background: #e86244;
+  border: #e86244;
+}
+
+.btn-primary:hover {
+  background: #e9411c;
+  border: #e9411c;
+}
+
+/* @media all and (min-width: 768px) {
+    tr td {
+        vertical-align: middle !important;
+    }
+    tr span:not([class]) {
+        padding: 1rem 1rem;
+    }
+  } */
+  .main{
+      margin-top: 9%;
+  }
+  h6{
+margin: 2%;
+margin-left: 1%;
+  }
+  button{
+      background-color: #e86244;
+      border-color: #e86244;
+     /* justify-content: right; */
+  }
+  .btnCreate{
+    position:relative;
+    margin-left: 83%;
+  }
+
+  input[list]{
+    width: fit-content;
+  }
+  .modal-title{
+    color: #69819d;
+  }
+  .modal-dialog{
+    margin-top: 10rem;
+
+  }
+  .btnSubmit{
+    width: 30%;
+      border-color: #69819d;
+      background-color: #69819d;
+    color: white;
+  }
+#exampleModal{
+  position: fixed;
+  
+}
+  .headlines{
+    color:#232323
+  }
+  .modal-header .close {
+    display:none;
+  }

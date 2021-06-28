@@ -1,0 +1,62 @@
+<p-toast [style]="{'margin-top':'70px'}"></p-toast>
+<p-card>
+    <form>
+
+        <!--Basic Information-->
+        <div class="d-flex justify-content-between ">
+            <h3 class="pl-3 ">Manage User</h3>
+        
+
+        </div>
+        <!-- <a class="text-success wrapp" (click)="add()">
+    <button  type="button" class="fa fa-plus btn  btnn " mdbBtn color="danger" mdbWavesEffect>ADD</button>
+  </a> -->
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+
+                                    <table id="mytable" class="table table-bordred table-striped">
+                                        <thead>
+                                            <th>User Name</th>
+                                            <th>Email</th>
+                                            <th>Country</th>
+                                            <th colspan="3">Operations</th>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr *ngFor="let user of allUsers| paginate: {itemsPerPage: 5, currentPage: cp }">
+                                                <td>{{user.userName}}</td>
+                                                <td>{{user.email}}</td>
+                                                <td>{{user.country_Name}}</td>
+                                                <td></td>
+                                                <td>
+                                                    <P data-placement="top" data-toggle="tooltip" title="Delete">
+                                                        <p-confirmPopup></p-confirmPopup>
+                                                        <button class="btn btn-xs deletebtn" data-title="Delete" (click)="confirm($event,user.userName)"><span
+                                class="glyphicon glyphicon-trash table-remove"><i
+                                  class="bi bi-trash"></i></span></button>
+
+                                                    </P>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <pagination-controls (pageChange)="cp=$event"></pagination-controls>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</p-card>

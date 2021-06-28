@@ -1,0 +1,138 @@
+<div class="row">
+
+  <div class="col-lg-4 ">
+    <div class=" logo ps-5 ">
+      <a href="#"><img width=130px src="../../../assets/project logo.png" alt="" /></a>
+    </div>
+    <div id="Div2" class=" ps-5">
+
+      <form class="form-signin" #loginForm="ngForm" novalidate>
+        <h3 class="Signin">Sign Up</h3>
+        <p class="info pt-1"> Please Enter Your Personal Information </p>
+        <div *ngIf="invalidregister" class="alert alert-danger"> Invalid Register try again</div>
+
+        <div class="form-group">
+        </div>
+
+
+        <div class="form-group">
+          <input #FirstName="ngModel" name="First" [(ngModel)]="Data.firstName" required class="form-control inpts"
+            placeholder="First Name" type="text" />
+          <span *ngIf="FirstName.errors?.required&&FirstName.touched">*</span>
+        </div>
+        <div>
+          <input #LastName="ngModel" name="LastName" [(ngModel)]="Data.lastName" required class="form-control inpts"
+            placeholder="Last Name" type="text" />
+          <span *ngIf="LastName.errors?.required&&LastName.touched">*</span>
+        </div>
+        <div class="form-group">
+
+          <input #UserName="ngModel" name="UserName" [(ngModel)]="Data.userName" required class="form-control inpts"
+            placeholder="User Name" type="text" />
+          <span *ngIf="UserName.errors?.required&&UserName.touched">*</span>
+
+        </div>
+        <div class="form-group">
+          <input #Phone="ngModel" name="Phone" [(ngModel)]="Data.phone" [pattern]="mobNumberPattern" required
+            class="form-control inpts" placeholder="Phone" type="text" />
+          <span *ngIf="Phone.errors?.required&&Phone.touched">*</span>
+          <span *ngIf="Phone.errors?.pattern">
+            Mobile number not valid.
+          </span>
+
+        </div>
+
+        <div class="form-group">
+
+          <input #Dob="ngModel" name="DOB" [(ngModel)]="Data.birthdate" required class="form-control inpts"
+            placeholder="Date of birth" type="date" />
+          <span *ngIf="Dob.errors?.required&&Dob.touched">*</span>
+
+        </div>
+        <div class="form-group">
+          <input #Email="ngModel" name="Email" [(ngModel)]="Data.Email" required class="form-control inpts"
+            placeholder="Email" type="email" />
+          <span *ngIf="Email.errors?.required&&Email.touched ">*</span>
+          <!-- <span *ngIf="Email.errors?.pattern">
+            Invalid Email
+          </span> -->
+        </div>
+        <div class="form-group">
+          <div>
+            <input #Password="ngModel" name="Password" [(ngModel)]="Data.password" required class="form-control inpts "
+              placeholder="Password" type="password" data-toggle="password" />
+
+
+          </div>
+
+          <span *ngIf="Password.errors?.required&&Password.touched">*</span>
+
+        </div>
+        <div class="form-group">
+          <input #CPassword="ngModel" name="CPassword" [(ngModel)]="Data.cpassword" required class="form-control inpts"
+            placeholder="Confirmed Password" type="password" />
+          <span *ngIf="CPassword.errors?.required&&CPassword.touched">Password Must be matched</span>
+        </div>
+        <div class="form-group" id="cc">
+
+          <select class="select-option form-control con" #mySelect (change)='selectChangeHandler(mySelect.value)'
+            name="country" [(ngModel)]="Data.countryid">
+            <option value="0"> Select country</option>
+            <option class='option' *ngFor='let country of countrylist' [value]="country.country_id">
+              {{country.country_Name}}</option>
+          </select>
+          &nbsp; &nbsp;
+          <select class="select-option form-control con" name="city" [(ngModel)]="Data.cityid">
+            <option value="0"> Select City </option>
+            <option class='option' *ngFor="let city of citylist " [value]="city.city_Id">{{city.city_Name}}</option>
+          </select>
+
+        </div>
+
+
+<div>
+        <fieldset>
+          <div class="some-class">
+            <input #Gender="ngModel" name="Gender" [(ngModel)]="Data.gender" required class="form-check-input "
+              placeholder="Gender" type="radio" value="Male" />
+            <label for="Male">Male</label>
+            <input #Gender="ngModel" name="Gender" [(ngModel)]="Data.gender" required class="form-check-input"
+            placeholder="Gender" type="radio" value="Female" />
+            <label for="Female">Female</label>
+          </div>
+        </fieldset>
+        <span *ngIf="Gender.errors?.required&&Gender.touched">*</span>
+      </div>
+
+        <div class="forcheckbox">
+
+          <!-- <label><a href="#">Terms of Service </a>& <a href="#">Privacy Policy</a></label> -->
+        </div>
+        <div class="mt-3">
+          <!-- <button  id="Button2" class="BkBtn" >
+                <a [routerLink]="['/login']"></a></button> -->
+          <input class="BkBtn" type="button" value="Back" (click)="BackToLogIn()" />
+
+          <!-- <input id="Button2" class="BkBtn" type="button" value="Back" onclick="BackToLogIn();" /> -->
+          <button type="submit" class="Submit" (click)="SignUp()">Submit</button>
+
+
+        </div>
+
+      </form>
+
+
+      <a href="#" class="btn">
+        <i class="btn-icon">
+          <div class="btn-icon-1"></div>
+          <div class="btn-icon-2"></div>
+        </i>
+      </a>
+    </div>
+
+
+  </div>
+
+  <div class="col-lg-8 im">
+    <img class="background" src="../../../assets/back.jpeg">
+  </div>

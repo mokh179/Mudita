@@ -1,0 +1,49 @@
+/*leftside*/
+.container {
+    margin-top: 115px;
+  }
+.sticky-top {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 115px;
+    margin-bottom: 28px;
+}
+.userimg{
+    position: relative;
+    display: inline-block;
+}
+.userimg .img{
+    border: 5px solid #e86244;
+    border-radius: 100%;
+    width: 140px;
+    height: 140px;
+    
+}
+
+.candidate-info ul {
+    list-style: none;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 0;
+}
+
+.candidate-info ul li a {
+    width: 100%;
+    padding: 10px 20px;
+    display: inline-block;
+    color: #232323;
+    text-decoration: none;
+    font-size: medium;
+}
+
+.candidate-info ul li a i {
+    margin-right: 5px
+}
+
+@media (max-width: 769px) {
+    .container {
+        margin-top: 115px;
+      }
+}  
+
+

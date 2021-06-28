@@ -1,0 +1,101 @@
+<div class="container" style="margin-top: -47px">
+  <p-card>
+    <form>
+      <!--Basic Information-->
+      <h1 style="text-align: center"><strong>Dashboard</strong></h1>
+      <hr />
+      <!--Cards Information-->
+      <!-- <div class="main-container"> -->
+      <!-- <div class="heading-container"> -->
+
+      <!-- </div> -->
+      <div class="card-container">
+        <div class="col-md-6">
+          <div class="card card-1 bigcard">
+            <div class="titlebig" >
+              <i class="fas fa-users card__iconbig"> </i>
+               Total Users
+            </div>
+            <h2 class="card__numbig">{{allUser}}</h2>
+          </div>
+
+          <div class="card card-1 bigcard">
+            <div class="titlebig" >
+              <i class="fas fa-building card__iconbig"> </i>
+               Total Company
+            </div>
+            <h2 class="card__numbig">{{allCompany}}</h2>
+          </div>
+
+          <div class="card card-1 bigcard">
+            <div class="titlebig" >
+              <i class="fas fa-briefcase card__iconbig"> </i>
+               Total Vacancy
+            </div>
+            <h2 class="card__numbig">{{allVacancy}}</h2>
+          </div>
+<!--  -->
+          <!-- <div class="card card-4 bigcardend">
+            <div class="titlebig" >
+              <i class="fas fa-atlas card__iconbig" ></i>
+              #Job Category  &  #Job Titles
+            </div>
+            <h2 class="card__numbig"style="color:white">&nbsp;&nbsp;&nbsp; {{allJobCat}} &nbsp;&nbsp;&nbsp;&nbsp; &  &nbsp;&nbsp;&nbsp;&nbsp; {{allJobTitle}}</h2>
+          </div> -->
+<!--  -->
+        </div>
+        <div class="col-md-5">
+          <div class="card card-11 smallcard">
+            <div class="titlesmall"><i class="fas fa-user card__iconsmall"></i>
+                &nbsp; Active Users
+            </div>
+            <h3 class="card__numsmall">{{allActiveUser}}</h3>
+          </div>
+          <div class="card  card-12 smallcard">
+            <div class="titlesmall">
+              <i class="fas fa-user-slash card__iconsmall">
+             </i>
+             Inactive Users
+            </div>
+            <h3 class="card__numsmall">{{allDeactiveUser}}</h3>
+          </div>
+
+          <div class="card  card-11 smallcard">
+            <div class="titlesmall">
+              <i class="fas fa-door-open card__iconsmall">
+             </i>
+             Active Company
+            </div>
+            <h3 class="card__numsmall">{{allActiveCompany}}</h3>
+          </div>
+          <div class="card  card-12 smallcard">
+            <div class="titlesmall">
+              <i class="fas fa-door-closed card__iconsmall">
+             </i>
+             Inactive Company
+            </div>
+            <h3 class="card__numsmall">{{allDeactiveCompany}}</h3>
+          </div>
+
+          <div class="card  card-11 smallcard">
+            <div class="titlesmall">
+              <i class="fas fa-business-time card__iconsmall">
+             </i>
+             Active Vacancy
+            </div>
+            <h3 class="card__numsmall">{{allActiveVacancy}}</h3>
+          </div>
+          <div class="card  card-12 smallcard">
+            <div class="titlesmall">
+              <i class="fas fa-exclamation-triangle card__iconsmall">
+             </i>
+             Inactive Vacancy
+            </div>
+            <h3 class="card__numsmall">{{allDeactiveVacancy}}</h3>
+          </div>
+        </div>
+      </div>
+      <!-- </div> -->
+    </form>
+  </p-card>
+</div>

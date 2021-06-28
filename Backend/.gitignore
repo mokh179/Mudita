@@ -1,0 +1,17 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Context/obj
+/Context/bin/Debug/net5.0
+/GraduationProject/bin/Debug/net5.0
+/GraduationProject/.vs/GraduationProject
+/GraduationProject/appsettings.json
+/GraduationProject/obj
+/Models/bin/Debug/net5.0
+/Models/obj
+/Services/bin/Debug/net5.0
+/Services/obj
+
+/GraduationProject/Resources/User

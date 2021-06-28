@@ -1,0 +1,85 @@
+.container {
+  margin-top: 90px;
+}
+
+.main-search {
+  font-weight: bold;
+}
+#VS {
+  /* display: block; */
+  text-align: center;
+  margin-top: 0 !important;
+  margin-bottom: 10 !important;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.card-title{
+  text-align: center;
+  font-weight: bold;
+
+}
+/* .btn-compare {
+  background-color: #e86244;
+  border: none;
+  border-radius: 12px;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  width: 25%;
+  font-size: 20px;
+  height: 3.1rem;
+
+  margin-bottom: 2rem;
+} */
+/* .btn-compare:hover {
+  background-color: #69819d;
+  color: white;
+} */
+.input-search {
+
+  text-align:center ;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* resize: vertical; */
+  width: 20%;
+}
+/* #left-input {
+  left: 20px;
+} */
+/* .card-img {
+  width: 100%;
+  height: 42vw;
+  object-fit: cover;
+} */
+
+
+/* select{
+  --bs-gutter-x:0rem !important;
+} */
+
+
+.allcard
+{
+  margin-top: 8rem;
+}
+.card
+{
+  display: block !important;
+  text-align: center;
+  background-color: #ebebeb !important;
+  margin-top: 11rem !important;
+  margin-bottom: 7rem !important;
+  margin: 0 auto;
+  float: none;
+  width: 75%;
+  height: 23em;
+}
+.btn-primary{
+  background-color: #eb6244;
+  border-color: #eb6244;
+  width: 20%;
+}

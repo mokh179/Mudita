@@ -1,0 +1,80 @@
+<div class="container-sm mb-5 allcard h-100">
+  <div class="card bg-ligh mx-auto ">
+    <!-- <img src="../../../assets/searchcompare.png" class="card-img" alt="..." /> -->
+    <!-- <div class="card text-black "> -->
+
+    <br />
+    <!-- <h1 class="card-title"></h1> -->
+    <!-- <h1 class="card-text main-search"> -->
+      <h2 class="card-title">
+        Compare companies to find<br />
+        your perfect match
+      </h2>
+    <!-- </h1> -->
+    <br />
+
+    <input
+      type="text"
+      class="input-search"
+      id="company"
+      [(ngModel)]="id1"
+      #firstselect
+      (change)="categorytextbox(firstselect.value)"
+      name="companynames"
+      placeholder="Company name"
+      list="companynames"
+    />
+    <!-- <select id="companynames" type="text" name="companynames" placeholder="Company name" class="select-option form-control"  [(ngModel)]="id1" #firstselect  (change)='categorytextbox(firstselect.value) '> -->
+    <datalist id="companynames">
+      <option
+        *ngFor="let company of companiesfirst"
+        [value]="company.companyName"
+      >
+        {{ company.companyName }}
+      </option>
+    </datalist>
+    <!-- </select> -->
+
+    <span id="VS"> &nbsp;&nbsp;&nbsp; VS &nbsp;&nbsp;&nbsp;</span>
+    <input
+      type="text"
+      class="input-search"
+      id="company2"
+      [(ngModel)]="id2"
+      name="companyname"
+      placeholder="Company name"
+      list="companyname"
+      #secondselect
+    />
+    <!-- <select id="companyname" type="text" class="select-option form-control"  name="companyname" [(ngModel)]="id2" placeholder="Company name" #secondselect> -->
+    <datalist id="companyname">
+      <option
+        *ngFor="let company of companiessecond"
+        [value]="company.companyName"
+      >
+        {{ company.companyName }}
+      </option>
+    </datalist>
+    <!-- </select> -->
+    <br />
+
+    <!--    <select class="form-control search-slt" #searchCountry  (change)='selectcountry(searchCountry.value)'
+                        name="country" [(ngModel)]="idcountry">
+                          <option>Select Country</option>
+                          <option class='option' *ngFor='let country of countrysearchlist' [value]="country.country_id">
+                            {{country.country_Name}}</option>
+                        </select> -->
+
+    <div>
+      <br />
+      <br />
+
+      <a [routerLink]="['/compareresult', id1, id2]">
+        <!-- <button class="btn-compare">Compare</button> -->
+        <button type="button" class="btn btn-primary wrn-btn ">Compare</button>
+      </a>
+    </div>
+  </div>
+
+  <!-- </div> -->
+</div>

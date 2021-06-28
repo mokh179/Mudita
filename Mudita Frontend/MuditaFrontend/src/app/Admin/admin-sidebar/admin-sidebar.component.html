@@ -1,0 +1,73 @@
+<div class="container " style="margin:115px;">
+    <div class="row">
+        <!--LeftSideBody-->
+        <div class="col-xl-3 col-lg-4 ">
+            <div class="sticky-top">
+                <p-card>
+                    <div class="candidate-info">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <div class="userimg">
+                                <img src="../../../assets/admin.png" class="rounded-circle" width="145">
+                                <div class="upload-link" title="update" data-toggle="tooltip" data-placement="right">
+                                    <input type="file" class="update-flie">
+                                    <i class="pi pi-camera"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <h3>{{userName}}</h3>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li>
+                                <a routerLink="/Dashboard">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Dashboard</span></a>
+                            </li>
+                            <li>
+                                <a routerLink="adminuser">
+                                    <i class="fas fa-users"></i>
+                                    <span>Manage User</span></a>
+                            </li>
+                            <li>
+                                <a routerLink="adminvacancy">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>Manage Job</span></a>
+                            </li>
+                            <li>
+                                <a routerLink="admincategory">
+                                    <i class="fas fa-book"></i>
+                                    <span>Manage Category</span></a>
+                            </li>
+                            <li>
+                                <a routerLink="admincompany">
+                                    <i class="fas fa-building"></i>
+                                    <span>Manage Company</span></a>
+                            </li>
+                            <li>
+                                <a routerLink= "admincountry">
+                                    <i class="fas fa-globe-americas"></i>
+                                    <span>Manage Country</span></a>
+                            </li>
+                            <li>
+                                <a routerLink="admincity">
+                                    <i class="fas fa-city"></i>
+                                    <span>Manage City</span></a>
+                            </li>
+                            <li>
+                                <a (click)="logout()">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Logout</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </p-card>
+
+            </div>
+        </div>
+        <!--RightSideBody-->
+        <div class="col-xl-9 col-lg-8 my-5 ">
+
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+</div>

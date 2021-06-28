@@ -1,0 +1,350 @@
+<!--inner user detials-->
+<p-toast [style]="{'margin-top':'70px'}"></p-toast>
+<div class="jumbotron">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 candidate-info">
+                <!-- Upload Image -->
+                <div class="userimg">
+                    <img [src]="photos" class="img">
+                    <div class="upload-link" title="update" data-toggle="tooltip" data-placement="right">
+                        <input type="file" #file placeholder="Choose file" class="update-flie" accept="image/png, image/jpeg" (change)="uploadFile(file.files)">
+                        <i class="pi pi-upload"></i>
+                    </div>
+                </div>
+                <!-- User Detials -->
+                <div class="text-white">
+                    <h4> {{UserBasicInfo.fname}} {{UserBasicInfo.lname}} <i class="pi pi-pencil" (click)="showBasicDialog()" label="Show"></i></h4>
+                    <p>{{UserBasicInfo.title}}</p>
+                    <ul class="clearfix">
+                        <li><i class="pi pi-user"></i> @ {{UserBasicInfo.userID}}</li>
+                        <li><i class="pi pi-phone"></i> {{UserBasicInfo.phone}}</li>
+                        <li><i class="pi pi-briefcase"></i> {{UserBasicInfo.title}}</li>
+                        <li><i class="pi pi-envelope"></i> {{UserBasicInfo.email}}</li>
+                    </ul>
+                    <!-- % of fully profile -->
+                    <div class="pb-3">
+                        <p-progressBar [value]="UserBasicInfo.strength *100" [(ngModel)]="UserBasicInfo.strength" [style]="{'height': '7px'}">
+                        </p-progressBar>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--model edit-->
+<p-dialog [contentStyle]="{'overflow':'visible'}" header="Personal Detials" [(visible)]="displayBasic" [style]="{width: '40vw'}" [baseZIndex]="10000">
+    <form #BasicInfoform="ngForm" novalidate (ngSubmit)="SaveBasicInfo()">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 ">
+                <label>Frist Name:</label>
+                <input #fname="ngModel" [(ngModel)]="UserBasicInfo.fname" name="fname" type="text" class="ng-invalid ng-dirty" value="{{UserBasicInfo.fname}}" pInputText />
+                <small class="p-error" *ngIf="fname.errors?.required&&fname.touched ">Username is not
+                    available.</small>
+            </div>
+            <div class="col-lg-6 col-md-6 ">
+                <label>Last Name:</label>
+                <input #lname="ngModel" [(ngModel)]="UserBasicInfo.lname" name="lname" type="text" class="ng-invalid ng-dirty" value="{{UserBasicInfo.lname}}" pInputText />
+                <small class="p-error" *ngIf="lname.errors?.required&&lname.touched ">Username is not
+                    available.</small>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <label>Title:</label>
+                <select #categorys (change)='selectChangeCategory(categorys.value)' class="select-option form-control" name="category">
+                    <option class='option' *ngFor='let i of category' [value]="i.cat_Id">
+                        {{i.cat_Desc}}</option>
+                </select>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <label>JobTitle:</label>
+                <select #JobCat class="select-option form-control" name="Jobcategory" [(ngModel)]="UserBasicInfo.title">
+                    <option selected value="0">--select--</option>
+                    <option class='option' *ngFor='let i of JobCategory' [value]="i.jobCat_Id">
+                        {{i.jobCat_Desc}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="col-lg-6 col-md-6 py-4 ">
+                <label>Country:</label>
+                <select class="select-option form-control" #mySelect (change)='selectChangeCity(mySelect.value)' name="country" [(ngModel)]="UserBasicInfo.country">
+                    <option value="0">---Select---</option>
+                    <option class='option' *ngFor='let country of countries' [value]="country.country_id">
+                        {{country.country_Name}}</option>
+                </select>
+            </div>
+
+            <div class="col-lg-6 col-md-6 py-4">
+                <label>City:</label>
+                <select class="select-option form-control" name="city" [(ngModel)]="UserBasicInfo.city">
+                    <option value="0"> Select City </option>
+                    <option class='option' *ngFor="let city of cities " [value]="city.city_Id">{{city.city_Name}}</option>
+                  </select>
+            </div>
+            <div class="col-lg-12 col-md-12">
+                <label>Phone Ext</label>
+                <p-inputMask #phone mask="(999) 999-9999? 99999" placeholder="{{UserBasicInfo.phone}}" [(ngModel)]="UserBasicInfo.phone" name="phone"></p-inputMask>
+            </div>
+            <div class="col-lg-12 col-md-12 pt-3">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <h6 class="m-a0 font-14" #email>{{UserBasicInfo.email}}</h6>
+                    <a routerLinkActive="active" routerLink="#">Change Email Address</a>
+                </div>
+            </div>
+        </div>
+        <div class="p-dialog-footer">
+            <p-button icon="pi pi-check" label="Ok" type="sumbit" [disabled]="!BasicInfoform.valid" styleClass="p-button-text"></p-button>
+        </div>
+    </form>
+
+</p-dialog>
+
+<div class="container leftside-container">
+    <div class="row">
+        <!--LeftSideBody-->
+        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+            <div class="sticky-top ">
+                <div class="Listcomp">
+                    <ul>
+                        <li>
+                            <a class="leftside" routerLinkActive="active" routerLink="/userresume/{{UserBasicInfo.userID}}" fragment="key_skills_bx">
+                                <span>Skills</span></a>
+                        </li>
+                        <li>
+                            <a class="leftside" routerLinkActive="active" routerLink="/userresume/{{UserBasicInfo.userID}}" fragment="employment_bx">
+                                <span>Employment</span></a>
+                        </li>
+                        <li>
+                            <a class="leftside" routerLinkActive="active" routerLink="/userresume/{{UserBasicInfo.userID}}" fragment="education_bx">
+                                <span>Education</span></a>
+                        </li>
+                        <li>
+                            <a class="leftside" routerLinkActive="active" routerLink="/userresume/{{UserBasicInfo.userID}}" fragment="Social_Media_bx">
+                                <span>Social Media</span></a>
+                        </li>
+                        <li>
+                            <a class="leftside" routerLinkActive="active" routerLink="/userresume/{{UserBasicInfo.userID}}" fragment="attach_resume_bx">
+                                <span>Attach Resume</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--RightSideBody-->
+        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12">
+
+            <!-- key skills -->
+            <div class="card p-4 mb-5" id="key_skills_bx">
+                <h5 class="mb-4">Key Skills</h5>
+                <p-button class="btn site-button p-button-danger" type="button" (click)="showkeyskillsDialog()" [style]="{'background':'#e86244','border':'none','color':'white'}" icon="pi pi-pencil" label="Edit">
+                </p-button>
+                <div class=" p-ai-center">
+                    <p-chip *ngFor="let x of skillsModel.skills" label="{{ x }}" styleClass="p-mr-2 p-my-2"></p-chip>
+                </div>
+
+                <p-dialog [contentStyle]="{'overflow':'visible'}" header="Skills" [(visible)]="displaykeyskills" [style]="{width: '40vw'}" [baseZIndex]="1030">
+                    <p-autoComplete [(ngModel)]="skillsModel.skills" [suggestions]="resultsskill" [showEmptyMessage]="true" (completeMethod)="searchskill($event)" name="skills" [style]="{width:'100%'}" [multiple]="true">
+                    </p-autoComplete>
+                    <ng-template pTemplate="footer">
+                        <p-button icon="pi pi-check" label="Ok"  (click)="SaveSkills()" styleClass="p-button-text" (disabled)="BasicInfoform.invalid"></p-button>
+                    </ng-template>
+                </p-dialog>
+            </div>
+            <!--Employment -->
+            <div class="card p-4 mb-5" id="employment_bx">
+                <h5 class="mb-4">Employment</h5>
+                <p-button class="btn site-button p-button-danger" type="button" (click)="showEmploymentDialog()" [style]="{'background':'#e86244','border':'none','color':'white'}" icon="pi pi-pencil" label="New">
+                </p-button>
+                <div *ngFor="let item of UserEmpArr" class="pb-3">
+                    <h5>{{item.title}} &nbsp; <a (click)="DeleteEmp(item.empuserID)"><i class="pi pi-times Deleteicon"></i></a></h5>
+                    <p class="mb-0 text-secondary">Company: {{item.company}}</p>
+                    <p class="mb-0 text-secondary">From: {{item.from|date}}</p>
+                    <p class="mb-0 text-secondary">TO: {{item.to |date}}</p>
+                    <p class="mb-0 text-secondary">{{item.description}}</p>
+                </div>
+
+
+                <p-dialog [contentStyle]="{'overflow':'visible'}" header="Employment" [(visible)]="displayEmployment" [style]="{width: '40vw'}" [baseZIndex]="10000">
+                    <form #EmploymentSkills="ngForm" novalidate (ngSubmit)="SaveEmployement()">
+                        <div class="row ">
+                            <div styleclass="col-lg-12 col-md-12">
+                                <span for="autocomplete">Your Designation</span>
+                                <p-dropdown [options]="AllJobCategory" optionValue="jobCat_Id" [(ngModel)]="UserEmp.title" name="jobcat" optionLabel="jobCat_Desc" placeholder="Select Tilte " [showClear]="true"></p-dropdown>
+                            </div>
+                            <div class="col-lg-12 col-md-12 py-3">
+                                <span>Your Organization</span>
+                                <span class="p-fluid">
+                                    <p-dropdown [options]="AllCompanies" optionValue="companyID"
+                                        [(ngModel)]="UserEmp.company" name="comapny" optionLabel="companyName"
+                                        placeholder="Select Company " [showClear]="true"></p-dropdown>
+                                </span>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <span>Is this your current company?</span>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="p-field-radiobutton">
+                                            <p-radioButton #checkvlue (onClick)="chackRadio(checkvlue.value)" name="yes" value="true" [(ngModel)]="UserEmp.status" inputId="Yes"></p-radioButton>
+                                            <label for="yes">Yes</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="p-field-radiobutton">
+                                            <p-radioButton #checkvlue2 (onClick)="chackRadio(checkvlue2.value)" name="no" value="false" [(ngModel)]="UserEmp.status" inputId="No">
+                                            </p-radioButton>
+                                            <label for="no">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 pb-3">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <span>Start</span>
+                                        <input  class="form-control"  type="datetime-local" name="startdate" id ="startdate" placeholder="dd/mm/yyyy" [(ngModel)]="UserEmp.from"/>
+
+                                        <!-- <p-inputMask mask="99/99/9999" [(ngModel)]="UserEmp.from" name="startdate" placeholder="dd/mm/yyyy" slotChar="dd/mm/yyyy"></p-inputMask> -->
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <span>End</span>
+                                        <input  class="form-control"  [disabled]="radio" type="datetime-local" name="enddate" id ="enddate" placeholder="dd/mm/yyyy" [(ngModel)]="UserEmp.to"/>
+                                        <span class="validationstyle" *ngIf="UserEmp.to<UserEmp.from">Start Date Should be Higher</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <label for="exampleFormControlTextarea1">Description</label>
+                                <textarea [rows]="3" pInputTextarea [(ngModel)]="UserEmp.description" name="Description"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <ng-template pTemplate="footer">
+                        <p-button icon="pi pi-check" label="Ok"  data-toast=""
+                        data-toast-position="topRight" data-toast-type="success"
+                        data-toast-icon="fe-icon-check-circle" data-toast-title="Success!"
+                        data-toast-message="Your Details is Updated Successfuly."
+                         (click)="SaveEmployement()" styleClass="p-button-text">
+                        </p-button>
+                    </ng-template>
+                </p-dialog>
+            </div>
+              <!-- confirmation Dialog -->
+            <!-- Modal -->
+ <div class="modal fade" data-backdrop="static" data-keyboard="false" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                <i class="fas fa-exclamation-triangle"></i> Alert
+              </h5>
+          </div>
+          <div class="modal-body text-danger">
+
+            <h5 class="headlines">You need to logout to update your profile changes</h5>
+
+          </div>
+
+          <div class="modal-footer">
+              <button type="button" class="btn btnSubmit" data-bs-dismiss="modal" (click)="logout()">
+    Submit </button>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+<p-confirmDialog #cd [style]="{width: '50vw'}">
+  <ng-template pTemplate="header">
+      <h3>Alert</h3>
+  </ng-template>
+  <ng-template pTemplate="footer">
+      <button type="button" class="btn btn-primary" (click)="cd.accept()"><i class="pi pi-check"></i> Logout</button>
+  </ng-template>
+</p-confirmDialog>
+
+
+            <!--Education -->
+            <div class="card p-4 mb-5" id="education_bx">
+                <h5 class="mb-4">Education</h5>
+                <p-button class="btn site-button p-button-danger" type="button" (click)="showEducationDialog()" [style]="{'background':'#e86244','border':'none','color':'white'}" icon="pi pi-pencil" label="Edit">
+                </p-button>
+                <p class="mb-4 text-secondary">Mention your employment details including your current and previous company work experience</p>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div *ngFor="let i of UserEduArr">
+                            <div class="mb-3">
+                                <h5 class="mb-2">{{i.university}} &nbsp; <a (click)="DeleteEdu(i.eduuserID)"><i class="pi pi-times Deleteicon"></i></a></h5>
+                                <p class="text-secondary"><small>{{i.typeOfEducation}}</small></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <p-dialog [contentStyle]="{'overflow':'visible'}" header="Education" [(visible)]="displayEducation" [style]="{width: '40vw'}" [draggable]="true" [resizable]="true">
+                    <form #EducationSkills="ngForm" novalidate (ngSubmit)="SaveEducation()">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group">
+                                    <label>Education</label>
+                                    <p-autoComplete [(ngModel)]="UserEdu.typeOfEducation" name="typeEdu" [suggestions]="resultstypeEdu" [style]="{width: '100%'}" [dropdown]="true" (completeMethod)="searchtypeofEdu($event)"></p-autoComplete>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 pt-3">
+                                <div class="form-group">
+                                    <label>University/Institute</label>
+                                    <p-autoComplete [(ngModel)]="UserEdu.university" name="university" [suggestions]="resultsuniversity" value="resultstypeEduid" [dropdown]="true" [style]="{width: '100%'}" (completeMethod)="searchuniversity($event)">
+                                    </p-autoComplete>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <ng-template pTemplate="footer">
+                        <p-button icon="pi pi-check" label="Ok" (click)="SaveEducation()" styleClass="p-button-text" (disabled)="EducationSkills.invalid"></p-button>
+                    </ng-template>
+                </p-dialog>
+            </div>
+            <!--Social_Media-->
+            <div class="card p-4 mb-5" id="Social_Media_bx">
+                <h5 class="mb-4">Social Media</h5>
+                <p-button class="btn site-button p-button-danger" type="button" (click)="showSocialMedia()" [style]="{'background':'#e86244','border':'none','color':'white'}" icon="pi pi-pencil" label="Edit">
+                </p-button>
+                <div *ngFor="let item of sampleEmpSC" class="py-3">
+                    <h6>{{item.type}} &nbsp; <a (click)="Deleteprofile(item.id)"><i class="pi pi-times Deleteicon"></i></a></h6>
+                    <p class="mb-0 text-secondary">{{item.url}}</p>
+                </div>
+                <form #form="ngForm" novalidate (ngSubmit)="SaveSocialMedia()">
+                    <p-dialog header="Social Media" [(visible)]="displaySocialMedia" [style]="{width: '40vw'}" [baseZIndex]="10000">
+                        <label for="cc" style="display:block;margin-bottom:4px">Social Link</label>
+                        <input id="url" type="url" name="url" [(ngModel)]="UserSocialMedia.url" #url="ngModel" pInputText pKeyFilter="ccRegex" pValidateOnly="true" placeholder="https://www.example.com" style="margin-right: .5em">
+                        <p-message severity="error" text="Not a valid number" *ngIf="url.errors?.required"></p-message>
+                        <ng-template pTemplate="footer">
+                            <p-button icon="pi pi-check" type="submit" [disabled]="form.invalid!" label="Ok" styleClass="p-button-text"></p-button>
+                        </ng-template>
+                    </p-dialog>
+                </form>
+            </div>
+            <!--Attach Resume-->
+            <div class="card p-4 mb-5" id="attach_resume_bx">
+                <h5 class="mb-4">Attach Resume</h5>
+                <p class="text-secondary">Resume is the most important document recruiters look for. Recruiters generally do not look at profiles without resumes.</p>
+                <form class="attach-resume">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="custom-file">
+
+                                <p class="m-auto text-center">
+                                    <i class="pi pi-upload"></i> Upload Resume File size is 30 MB
+                                </p>
+                                <input class="uploadbtnstyle" type="file" #fileR placeholder="Choose file" accept=".pdf" (change)="uploadFile(fileR.files)">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+    <br>
+    <div class="spancontrol">
+        <span class="badge badge-secondary text-dark rounded-pill" id="sp">Companies </span>
+    </div>
+    <!-- Search by Company -->
+    <div class="alert alert-success text-center" role="alert" *ngIf="CompanyFiltration.length==0">
+        No Companies Exist
+    </div>
+    <div *ngIf="CompanyFiltration.length!=0">
+        <div class="searchcontent">
+            <div class="col-md-5 p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
+                <input type="text" class="form-control rounded" [(ngModel)]="searchVal"
+                    (ngModelChange)='checkSearchVal()' placeholder="Search By Company" aria-label="Username"
+                    aria-describedby="basic-addon1">
+            </div>
+        </div>
+        <div class="row" id="ads">
+            <!-- Category Card -->
+            <div class="col-md-4 mb-5 cardDiminsion"
+                *ngFor="let item of CompanyFiltration  | paginate: {itemsPerPage: 12, currentPage: cp }"
+                [routerLink]="['/company/companydetails/',item.companyID]">
+                <div class="card roundstyle ">
+                    <div class="card-image">
+                        <span class="card-notify-badge">{{item.categoryName}}</span>
+                        <span class="card-notify-year">{{item.overAllRate}}<i class="fa fa-star"
+                                style="color: gold;"></i></span>
+                                <img *ngIf="item.img != null" src="https://localhost:44352/{{item.img}}" class="img-fluid rounded-start" alt="item.companyName">
+                                <img *ngIf="item.img == null" class="img-fluid" src="../../assets/company.jpg" alt="item.companyName">
+                    </div>
+                    <div class="card-image-overlay m-auto pt-4">
+                        <h5>{{item.companyName}}</h5>
+                        <h5>{{item.city_Name}}</h5>
+                    </div>
+                </div>
+
+            </div>
+            <div class="d-flex justify-content-center pt-3" *ngIf="CompanyFiltration.length!=0">
+                <pagination-controls (pageChange)="cp=$event"></pagination-controls>
+            </div>
+        </div>
+    </div>

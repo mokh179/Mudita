@@ -1,0 +1,66 @@
+<div class="container py-3">
+  <h2 class="title-compare">Your Comparison Result</h2>
+ <p></p>
+ <br/>
+ <a [routerLink]="['/searchcompare']" class="btn btn-success">Another Compare <i class="fas fa-question"></i> </a>
+
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" *ngFor ="let company of CompData"> {{company.companyName}}</th>
+
+      </tr>
+    </thead>
+    <tbody class="tbodyy">
+
+
+      <tr>
+        <th scope="row">Salary Rate</th>
+        <td scope="col" *ngFor ="let company of CompData"> {{company.totalsalary}}
+        <p-rating [ngModel]="company.totalsalary" [readonly]="true" [stars]="5" [cancel]="false"></p-rating>
+      </td>
+      </tr>
+      <tr>
+        <th scope="row">Working Environment Rate</th>
+        <td scope="col" *ngFor ="let company of CompData"> {{company.totalWorkingEnvironment}}
+        <p-rating [ngModel]="company.totalWorkingEnvironment" [readonly]="true" [stars]="5" [cancel]="false"></p-rating>
+
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Service Rate</th>
+        <td scope="col" *ngFor ="let company of CompData"> {{company.totalService}}
+        <p-rating [ngModel]="company.totalService" [readonly]="true" [stars]="5" [cancel]="false"></p-rating>
+
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Safety Rate</th>
+        <td scope="col" *ngFor ="let company of CompData"> {{company.totalSafety}}
+        <p-rating [ngModel]="company.totalSafety" [readonly]="true" [stars]="5" [cancel]="false"></p-rating>
+
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">OverAll Rate</th>
+        <td scope="col" *ngFor ="let company of CompData"> {{company.overAllRate}} <br>
+          <span class="badge bg-dark">Based on {{company.votecount}} reviews</span> <br>
+
+           <p-rating [ngModel]="company.overAllRate" [readonly]="true" [stars]="5" [cancel]="false"></p-rating>
+        </td>
+
+            </tr>
+      <!-- <tr >
+        <td colspan="3" class="text-center">
+         <h6>We recommend</h6> <h5><strong>{{recommended}}</strong></h5>
+
+        </td>
+      </tr> -->
+       </tbody>
+  </table>
+</div>
+<div>
+
+
+

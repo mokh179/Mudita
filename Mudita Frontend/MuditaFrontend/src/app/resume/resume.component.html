@@ -1,0 +1,64 @@
+<p-card>
+    <form>
+        <!--Basic Information-->
+        <h3 class="pl-3 ">RESUME</h3>
+        <hr />
+        <!-- Filter by Status -->
+        <div class="row filter">
+            <div class="col-sm-5 ">
+                <div>
+                    <span class="subtitle">Filter Status: </span>
+                </div>
+                <div>
+                    <select #sortselect class="form-control" data-val="true" (change)='sorttype(sortselect.value)'>
+                        <option selected value="1">None</option>
+                        <option value="2">Viewed</option>
+                        <option value="3">Selected</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div *ngFor="let item of jobs | paginate: {itemsPerPage: 4, currentPage: cp }"
+                class="col-lg-6 col-md-6 py-3">
+                <!-- <div class="card mt-5 p-4" [ngStyle]="{'box-shadow': (item.status == 2) ? '#0ce68191 0px 0px 65px 10px' : ''}"> -->
+                <div class="card mt-5 p-4" [ngClass]='{"VIEWEDshowcard":(item.status == 2),"SELECTEDshowcard":(item.status == 3)}'>
+                    <div>
+                        <h3 class="top mb-1" id="fullname" (click)="ChangeStatus(2,item)">{{item.name}}</h3>
+                    </div>
+
+                    <div class="d-flex flex-row justify-content-between text-align-center xyz">
+                        <h6><span> {{item.title}}</span></h6>
+
+                    </div>
+                    <div id="spancontent" lass="card-content mt-4 ">
+                        <strong id="spantitle">Location: </strong><span>{{item.city}}</span>,
+                        <span>{{item.country}}</span><br>
+                    </div>
+                    <div class="mt-4 d-flex justify-content-end ">
+                        <button *ngIf="item.cv" (click)="downloadCV(item.cv)" class="btn btn-block btn-lg"
+                            data-toggle="tooltip" title="Download CV">
+                            <i class="bi bi-download"></i>
+                        </button>
+                        <button (click)="ChangeStatus(3,item)" class="btn btn-block btn-lg" data-toggle="tooltip"
+                            title="Short List">
+                            <i class="bi bi-person-lines-fill"></i>
+                        </button>
+                        <button (click)="ChangeStatus(4,item)" class="btn btn-block btn-lg " data-toggle="tooltip"
+                            title="Reject">
+                            <i class="bi bi-dash-circle-fill "></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-lg-6 col-md-6 py-3 ">
+
+            <pagination-controls (pageChange)="cp=$event"></pagination-controls>
+
+        </div>
+    </form>
+</p-card>

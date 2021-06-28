@@ -1,0 +1,209 @@
+/*jumbotron*/
+
+.jumbotron {
+    margin-top: 5.5%;
+    font-size: large;
+    background-image: radial-gradient(ellipse at center, rgba(80, 76, 71, 0.658), rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.73)), url('../../../assets/bnr1.jpg');
+}
+
+.userimg {
+    position: relative;
+    display: inline-block;
+    margin: 0 30px 30px 0;
+}
+
+.userimg .img {
+    border: 5px solid #e86244;
+    border-radius: 100%;
+    width: 140px;
+    height: 140px;
+}
+
+.userimg .upload-link {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    line-height: 25px;
+    color: #e86244;
+    background: #fff;
+    top: 0;
+    right: 0;
+    box-shadow: 0 0 10px 0 rgba(0, 24, 128, .1);
+    border-radius: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+
+.update-flie {
+    position: absolute;
+    opacity: 0;
+    z-index: 0;
+    width: 100px;
+    cursor: pointer;
+    left: 0
+}
+
+.candidate-info ul li {
+    font-size: medium;
+    width: 50%;
+    float: left;
+    padding-bottom: 15px;
+    padding-left: 0;
+}
+
+.candidate-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.candidate-info {
+    margin-top: 30px;
+    display: flex;
+    width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+    .candidate-info ul {
+        width: 100%;
+    }
+    .candidate-info ul li {
+        width: 50%
+    }
+}
+
+@media only screen and (max-width: 426px) {
+    .jumbotron {
+        text-align: center;
+    }
+    .userimg {
+        margin: 25px 0 20px 0;
+    }
+    .candidate-info {
+        flex-wrap: wrap;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .candidate-info ul {
+        width: 100%;
+    }
+    .candidate-info ul li {
+        width: 100%
+    }
+}
+
+
+/*left side body*/
+
+.leftside-container {
+    margin-top: 3rem;
+}
+
+.sticky-top {
+    position: sticky;
+    position: -webkit-sticky;
+    /* top: 96px; */
+    margin-bottom: 50px;
+}
+
+.Listcomp ul {
+    list-style: none;
+    margin-bottom: 0
+}
+
+.Listcomp ul li a {
+    width: 100%;
+    padding: 15px 20px;
+    display: inline-block;
+    border-top: 1px solid #e1e7ff;
+    color: #232323;
+    font-size: medium;
+    border-left: 3px solid transparent;
+    text-decoration: none;
+}
+
+.Listcomp ul li a:hover {
+    background: #e8624434;
+    border-left-color: #e86244;
+    color: #e86244;
+}
+
+.Listcomp ul li a:hover span {
+    margin-left: 10px;
+    transition: all .5s;
+}
+
+@media only screen and (max-width: 426px) {
+    .sticky-top {
+        display: none;
+    }
+}
+
+
+/*Right Side Body*/
+
+.card a {
+    font-size: medium;
+    text-decoration: none;
+    color: #2e55fa;
+}
+
+.card a:hover {
+    color: #232323;
+}
+
+.p-dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+}
+
+
+/*Resume Headline*/
+
+.site-button {
+    margin-left: auto;
+    right: 25px;
+    position: absolute;
+}
+
+.Deleteicon{
+    text-decoration: none;
+    color:red;
+}
+
+
+
+/**/
+
+.custom-file>input[type=file] {
+    cursor: pointer;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0
+}
+
+.custom-file {
+    overflow: hidden;
+    position: relative;
+    padding: 40px;
+    text-align: center;
+    border: 0!important;
+    box-shadow: 0 0 10px 0 rgba(0, 24, 128, .1)!important;
+    height: 100px
+}
+
+
+/*resumee section*/
+
+.uploadbtnstyle {
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+    height: 100%;
+}
+
+.validationstyle {
+    color: red;
+}

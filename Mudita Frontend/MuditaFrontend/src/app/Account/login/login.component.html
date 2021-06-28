@@ -1,0 +1,63 @@
+<div class="row" >
+
+  <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 ">
+      <div class=" logo ps-5 ">
+          <a href="#"><img width=150px src="../../../assets/project logo.png" alt="" /></a>
+      </div>
+      <div id="Div1" class=" ps-5 pe-2">
+
+          <form class="form-signin pt-2" #loginForm="ngForm">
+
+              <h2 class="quote">If Opportunity Doesn’t Knock,Build A Door .. </h2>
+
+              <div *ngIf="invalidLogin" class="alert alert-danger"> Invalid Username or password</div>
+              <div *ngIf="ExpiredLogin" class="alert alert-danger"> Session Expired Please Login Again</div>
+
+              <br>
+              <div class="form-group">
+
+                <input  #username="ngModel" name="username"  [(ngModel)]="Data.username" required class="form-control inpts" placeholder="UserName" type="text" autofocus />
+                 <span *ngIf="username.errors?.required&&username.touched ">*</span>
+
+              </div>
+              <div class="form-group">
+                  <input #password="ngModel" name="password"  [(ngModel)]="Data.password" required class="form-control inpts" placeholder="Password" type="password" />
+                  <span *ngIf="password.errors?.required&&password.touched ">*</span>
+
+                </div>
+              <span class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="check1" name="example1">
+                  <label class="custom-control-label" for="check1">Remember me</label><br>
+              </span>
+              <div class="form-group text-left">
+                  <button class="site-button dz-xs-flex m-r5 form-signin-heading" type="submit" (click)="Save()">Login</button>
+
+              </div>
+              <a data-toggle="tab" href="#forgot-password" class="forget-pass"><i class="fa fa-unlock-alt"></i>
+                  Forgot Password</a>
+
+
+          </form>
+          <div>
+
+              <!-- <button class="cbt mt-4"  onclick="showDiv()" >Create an account</button> -->
+              <input id="Button1" class="cbt mt-4" type="button" value="Create an account"
+                  (click)="switchVisible()" />
+
+              <!-- <div class="sicon ml-3">
+                  <ul>
+                      <li><i class="fa fa-facebook"></i></li>
+                      <li><i class="fa fa-twitter"></i></li>
+                      <li><i class="fa fa-linkedin"></i></li>
+                      <li><i class="fa fa-google-plus"></i></li>
+                  </ul>
+              </div> -->
+          </div>
+      </div>
+
+
+  </div>
+  <div class="col-xl-8 col-lg-7 col-md-6">
+      <img class="background" src="../../../assets/back.jpeg">
+  </div>
+</div>

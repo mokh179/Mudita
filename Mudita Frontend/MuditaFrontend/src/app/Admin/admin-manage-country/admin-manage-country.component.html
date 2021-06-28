@@ -1,0 +1,185 @@
+<p-card>
+  <form>
+
+    <!--Basic Information-->
+    <div class="d-flex justify-content-between ">
+      <h3 class="pl-3 ">Manage Country</h3>
+      <a class="text-success " (click)="add()">
+        <button type="button" class="fa fa-plus btn  btnn " mdbBtn color="danger" mdbWavesEffect data-bs-toggle="modal"
+          data-bs-target="#Add">ADD</button>
+      </a>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group ">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <table id="mytable" class="table table-bordred table-striped">
+                    <thead>
+                    <th>CountryName</th>
+                      <th colspan="2">Operations</th>
+                    </thead>
+                    <tbody>
+
+                      <tr *ngFor="let country of allCountries | paginate: {itemsPerPage: 5, currentPage: cp }">
+                        <td>{{country.country_Name}}</td>
+
+                        <td>
+
+                          <P data-placement="top" data-toggle="tooltip" title="Delete">
+                            <p-confirmPopup></p-confirmPopup>
+                            <button class="btn btn-xs deletebtn" data-title="Delete"
+                              (click)="confirm($event,country.country_id)"><span
+                                class="glyphicon glyphicon-trash table-remove"><i
+                                  class="bi bi-trash"></i></span></button>
+
+                          </P>
+                        </td>
+                        <td>
+                          <p data-placement="top" data-toggle="tooltip" title="Edit"><button
+                              class="btn btn-xs btn-dark editbtn" data-title="Edit" data-bs-toggle="modal"
+                              data-bs-target="#edit"><span (click)="Onclick(country.country_id)" class="glyphicon glyphicon-edit"><i
+                                  class="bi bi-pencil-square"></i></span></button>
+                          </p>
+                        </td>
+                        </tr>
+
+
+                    </tbody>
+
+                  </table>
+                  <pagination-controls (pageChange)="cp=$event"></pagination-controls>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- Add Modal -->
+
+          <div class="modal fade large-modal col-lg-12" id="Add" tabindex="-1" role="dialog" aria-labelledby="edit"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" style="color:#19c176" id="editHeading">Add New Country
+                  </h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="col-xl-12">
+                    <p-card>
+
+                      <!--Basic Information-->
+                      <div class="row m-3">
+                        <div class="col-lg-6 col-md-6">
+                          <div class="form-group">
+                            <h6>Country Name</h6>
+
+                            <input type="text" class=" form-control " id="addcount" #addcount name="addcount"
+                              placeholder="Country Name" [(ngModel)]="AddCountry.country_Name" />
+
+                          </div>
+                          <div class="form-group">
+                            <h6>Sort Name</h6>
+
+                             <input type="text" class=" form-control " id="addcount" #addcount name="addcount"
+                              placeholder="Sort Name" [(ngModel)]="AddCountry.sort_Name" />
+
+                          </div><div class="form-group">
+                            <h6>Phone Code</h6>
+                              <input type="text" class=" form-control " id="addcount" #addcount name="addcount"
+                              placeholder="Phone Code" [(ngModel)]="AddCountry.phone_Code" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 ">
+                      </div>
+                    </p-card>
+                  </div>
+                </div>
+                <div class="modal-footer ">
+                  <button type="button" class="btn  btnn wrn-btn" data-bs-dismiss="modal" (click)="add()"
+                    type="submit "><span class="style"></span>Save</button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+
+          <!-- Edit Modal -->
+          <div class="modal fade large-modal col-lg-12" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" style="color:#19c176" id="editHeading">Edit Your Details
+                  </h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                  <div class="col-xl-12">
+                    <p-card>
+                      <form>
+
+                        <!--Basic Information-->
+                        <div class="row m-3">
+                          <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                              <h6>Country Name</h6>
+                              <input [disabled]="x" type="text" class=" form-control " id="editcount" #editcount name="editcount"
+                              placeholder="Country Name" [(ngModel)]="EditCountry.country_Name" />
+                            </div>
+                          </div>
+                          <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                              <h6>Sort Name</h6>
+                              <input [disabled]="x" type="text" class=" form-control " id="editcount" #editcount name="editcount"
+                              placeholder="Sort Name" [(ngModel)]="EditCountry.sort_Name" />
+                            </div>
+                          </div>
+
+                          <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                              <h6>Phone Code</h6>
+                              <input [disabled]="x" type="text" class=" form-control " id="editcount" #editcount name="editcount"
+                              placeholder="Phone Code" [(ngModel)]="EditCountry.phone_Code" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 ">
+                          <div class="form-group ">
+                            <button [style]="{ 'width': '30%'} " [hidden]="HideEditBtn" (click)="onEdit()"
+                              class="btn p-button-warning " pButton type="submit " label="Edit"></button>
+                          </div>
+                        </div>
+                      </form>
+                    </p-card>
+                  </div>
+                </div>
+                <div class="modal-footer ">
+                  <button type="button" class="btn btnn wrn-btn" data-bs-dismiss="modal" [hidden]="HideSaveBtn"
+                    (click)="onSave()" pButton type="submit "><span
+                      class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                  <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #e86244">
+                    close
+                  </button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </form>
+</p-card>

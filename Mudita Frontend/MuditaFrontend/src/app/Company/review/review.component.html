@@ -1,0 +1,33 @@
+<div class="AM">
+    <div class="container">
+        <div class="alert alert-success text-center" role="alert" *ngIf="data.length==0">
+            No Reviews Exist
+        </div>
+        <div class="row" *ngIf="data.length !=0">
+            <h3 class="title">Reviews</h3>
+            <div class="col-lg-9">
+                <div class="card maincard">
+                    <div class="col-md-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row rowX"  *ngIf="data.length !=0">
+            <div class="col-lg-12">
+                <div class="card maincard">
+                    <div class="col-md-12" *ngFor="let item of data | paginate: {itemsPerPage: 5, currentPage: cp }">
+                        <div class="card-body card1">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h6 class="mb-0">{{item}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+                    <pagination-controls (pageChange)="cp=$event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

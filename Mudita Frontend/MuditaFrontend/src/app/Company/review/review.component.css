@@ -1,0 +1,84 @@
+.AM {
+    width: 70%;
+    height: 100%;
+}
+
+.title {
+    color: #69819d;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3.75rem;
+    text-align: left;
+    vertical-align: top;
+    /* margin-top: 2%; */
+    opacity: 70%;
+    padding-left: 4%;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 1%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: 0.125rem solid#69819d;
+}
+
+.card1 {
+    flex: 1 1 auto;
+    padding-bottom: 0%;
+    padding: 2.5%;
+}
+
+.maincard {
+    margin-top: 2.5%;
+    justify-content: center;
+    margin-left: 1%;
+    background-color: rgba(238, 238, 238, 0.774);
+}
+
+.bg-white,
+.form-control,
+.card,
+.p-component,
+.collection-sort {
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0);
+}
+
+.sec_card {
+    margin-top: 8.5%;
+    justify-content: center;
+    background-color: rgba(238, 238, 238, 0.774);
+}
+
+.card2 {
+    padding-left: 0%;
+    padding-right: 0%;
+    padding: 10% 10%;
+}
+
+select {
+    display: block;
+    width: 100%;
+    padding: 3.5% 3.5%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: 0.125rem solid#69819d;
+}
+
+.row1 {
+    margin-top: 1%;
+}
+
+.rowX {
+    margin-bottom: 30%;
+}
+
+.container {
+    margin-top: 4%;
+}

@@ -1,0 +1,69 @@
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 60%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 50%;
+  border: 3px solid #1f3264;
+  border-right: none;
+  padding: 5px;
+  height: 30px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #1f3264;
+}
+
+.searchTerm:focus{
+  color: #1f3264;
+}
+
+.searchButton {
+  width: 50px;
+  height: 30px;
+  border: 3px solid #1f3264;
+  background: #1f3264;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 15.4px;
+  margin-right: 3rem;
+
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 30%;
+  left: 43.5%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapp{
+  width: 30%;
+  position: absolute;
+  top: 30%;
+  left: 69.6%;
+  transform: translate(-50%, -50%);
+
+}
+
+.btnn{
+  background-color: #e86244;
+  color:white ; 
+}
+.deletebtn
+{
+  background-color: #e86244; 
+  margin-left: 0.7rem;
+  color:white ; 
+}

@@ -1,0 +1,114 @@
+<p-toast [style]="{'margin-top':'70px'}"></p-toast>
+<div class="container">
+  <div class="row">
+      <!--LeftSideBody-->
+      <div class="col-xl-3 col-lg-4 my-4 ">
+          <div class="sticky-top">
+              <p-card>
+                  <div class="candidate-info">
+                      <div class="d-flex flex-column align-items-center text-center">
+                          <div class="userimg">
+                            <img [src]="photos" class="img">
+                            <div class="upload-link" title="update" data-toggle="tooltip" data-placement="right">
+                               <input type="file" #file placeholder="Choose file" class="update-flie"
+                                   accept="image/png, image/jpeg" (change)="uploadFile(file.files)">
+                               <i class="pi pi-upload"></i>
+                           </div>
+                          </div>
+                         
+                             
+                              <div style="font-size:20px;border: 5  px;">
+                                <span style="padding:5px">
+                                    <i class="fas fa-star" alt="OverAllRate" title="OverAllRate"></i>    {{status.overAllRate}}
+                                </span>
+                                <span style="padding:5px">
+                                <i class="fas fa-users" alt="Number of Reviwers" title="Number of Reviwers"></i>   {{status.noReviwers}} 
+                                </span>
+                                <i class="fas fa-comments"alt="Number of Comments" title="Number of Comments"></i>  {{status.comments}}
+                            </div>
+                            
+                          <div class="mt-3">
+                              <h3>{{companyProf.companyName}}</h3>
+                          </div>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                          <li>
+                              <a href="#">
+                                  <i class="pi pi-user"></i>
+                                  <span>Profile</span></a>
+                          </li>
+                          <li>
+                              <a routerLinkActive="active" routerLink="postJob">
+                                  <i class="pi pi-file"></i>
+                                  <span>Post A Job</span></a>
+                          </li>
+                          <li>
+                              <a  routerLinkActive="active" routerLink="manageJob">
+                                  <i class="pi pi-inbox"></i>
+                                  <span>Manage Job</span></a>
+                          </li>
+                          <li>
+                              <a  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="far fa-compass"></i>
+                                  <span >Register Location</span></a>
+                          </li>
+                      </ul>
+                  </div>
+              </p-card>
+
+          </div>
+      </div>
+      <!--RightSideBody-->
+      <div class="col-xl-9 col-lg-8 my-4">
+        <router-outlet></router-outlet>
+      </div>
+
+  </div>
+</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Company Location
+                </h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-danger">
+
+              <h6 class="headlines">Choose  Country:</h6>
+              <!-- <div class=" col-md-3"> -->
+
+                  <select class="form-control search-slt " #searchCountry
+                      (change)='selectcountry(searchCountry.value)' name="country" [(ngModel)]="addedLocation.countryID">
+                      <option hidden value="" disabled selected>Select Country </option>
+                      <option class='option' *ngFor='let country of countrylist'
+                          [value]="country.country_id">
+                          {{country.country_Name}}</option>
+                  </select>
+<br>
+
+              <h6 class="headlines">Choose  City:</h6>
+                  <select class="form-control search-slt" name="city" [(ngModel)]="addedLocation.cityID">
+                      <option hidden value="" disabled selected>Select City</option>
+                      <option class='option' *ngFor="let city of citylist " [value]="city.city_Id">
+                          {{city.city_Name}}</option>
+                  </select>
+                <!-- </div> -->
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btnSubmit" data-bs-dismiss="modal" (click)="addlocation($event)">
+      Submit
+    </button>
+                <button type="button" class="btn btnClose" data-bs-dismiss="modal">
+      close
+    </button>
+            </div>
+        </div>
+    </div>
+</div>
+

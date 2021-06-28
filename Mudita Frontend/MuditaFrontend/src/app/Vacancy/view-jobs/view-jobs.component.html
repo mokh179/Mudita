@@ -1,0 +1,90 @@
+<p-toast [style]="{'margin-top':'70px'}"></p-toast>
+<div class="container" style="margin-top: 115px; margin-bottom: 20px;">
+  <div class="row">
+    <div>
+      <p-card>
+        <div class="container">
+          <div class="row">
+
+            <!-- Search on job by title or company -->
+            <div class="col-sm-6">
+              <div class="form-group">
+                <span>Search</span>
+                <input type="text" class="form-control datetimepicker"[(ngModel)]="searchVal"
+                (ngModelChange)='checkSearchVal()'  placeholder="search by job title OR Company">
+              </div>
+            </div>
+
+            <!-- Filter by date -->
+            <div class="col-sm-6">
+              <div>
+                <span class="subtitle">Filter by Date </span>
+              </div>
+              <div>
+                <div class="form-group">
+                  <select #sortselect class="form-control" data-val="true" (change)='sorttype(sortselect.value)'>
+                    <option value="1">Assending</option>
+                    <option value="2">Dessending</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- All Jobs -->
+        <div class="container">
+          <div class="row">
+            <div *ngFor="let i of jobs | paginate: {itemsPerPage: 12, currentPage: cp }" class="col-xl-4 col-lg-4 ">
+              <p-card header="{{i.jobTitle}}" subheader="{{i.company}}" styleClass="p-card-shadow mt-4 ">
+                <ng-template pTemplate="header">
+                  <span class="badge badge-secondary  spanposition" *ngIf="i.appliedState">Applied</span>
+
+                </ng-template>
+                <p-chip *ngFor="let x of i.jobTypes" label="{{ x }}" styleClass="p-mr-2 p-my-2"></p-chip>
+                <div class="text">{{i.description}}</div>
+                <ng-template pTemplate="footer">
+                  <div class="btn-control">
+                    <button *ngIf="!i.appliedState"  label="Apply" Class="btn btn-success mt-2 p-mr-2" (click)="Apply(i.vacancyID,i.companyId)"><i class="pi pi-check"></i> Apply</button>
+                    <button (click)="viewjobs(i.vacancyID)" Class="btn btn-primary mt-2"><i class="pi pi-info-circle"></i> More</button>
+                  </div>
+                </ng-template>
+              </p-card>
+            </div>
+            <pagination-controls (pageChange)="cp=$event"></pagination-controls>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+</div>
+
+
+<p-dialog header="Full Detials for {{onejob.jobTitle}}" [(visible)]="displayjob" [style]="{width: '50vw'}" [baseZIndex]="10000">
+  <div class="row m-3">
+    <div class="col-lg-16 col-md-6 ">
+        <h4><b>Job Title</b></h4>
+        <p>{{onejob.jobTitle}}</p>
+    </div>
+
+    <div class="col-lg-16 col-md-6 ">
+      <h4><b>Company Name</b></h4>
+      <p>{{onejob.company}}</p>
+  </div>
+
+    <div class="col-lg-12 col-md-12 pb-4 ">
+        <h4><b>Job Types</b></h4>
+        <p-chip *ngFor="let x of onejob.jobTags" label="{{ x }}" styleClass="p-mr-2 p-my-2"></p-chip>
+    </div>
+
+    <div class="col-lg-12 col-md-12 pb-4 ">
+        <h4><b>Job Tags</b></h4>
+        <p-chip *ngFor="let x of onejob.jobTypes" label="{{ x }}" styleClass="p-mr-2 p-my-2"></p-chip>
+    </div>
+    <div class="col-lg-12 col-md-12">
+        <h4><b>Job Description</b></h4>
+        <p style="text-align:justify">{{onejob.description}}</p>
+
+    </div>
+  </div>
+</p-dialog>

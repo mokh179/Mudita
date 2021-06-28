@@ -1,0 +1,101 @@
+/*root*/
+* {
+  font-family:  "Times New Roman", Georgia, serif;
+  /* font-weight: bold; */
+
+  }
+:root {
+    --lightblue: #c4deeb;
+    --tomato: #e86244;
+    --sky: #f9f9f9;
+    --lightgreen: #19c176;
+    --newwhite: #e7f6fd;
+    --newblue: #69819d;
+}
+
+body {
+    background-color: whitesmoke;
+    /* margin-top: 90px; */
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--newblue);
+    border-radius: 5px;
+}
+
+
+/*general*/
+
+.bg-white,
+.form-control,
+.card,
+.p-component {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.p-inputtext,
+.p-dropdown,
+.p-password {
+    border: none;
+    font-size: medium;
+    width: 100%;
+}
+
+.form-control {
+    border: none;
+    font-size: medium;
+    border-radius: 0%;
+    width: 100%;
+}
+
+.card {
+    border-radius: 0;
+}
+
+.btn {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    vertical-align: middle;
+
+}
+
+.btn:after {
+    background-color: #fff;
+    content: "";
+    height: 100%;
+    left: -110%;
+    opacity: .3;
+    position: absolute;
+    top: 0;
+    transform: skewX(25deg);
+    transition: all .5s ease 0s;
+    width: 25px;
+    z-index: -1;
+    filter: blur(5px);
+    filter: blur(5px);
+}
+
+.btn:hover:after {
+    left: 110%;
+
+}
+
+.bg-lightprimary {
+    background-color: var(--lightblue);
+    border-radius: 4px;
+}
+
+/*paginator*/
+pagination-controls{
+    display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin-top: 2rem !important;
+
+}

@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="row">
+        <!--LeftSideBody-->
+        <div class="col-xl-3 col-lg-4 ">
+            <div class="sticky-top">
+                <p-card>
+                    <div class="candidate-info">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <div class="userimg">
+                                <img [src]="photos" class="img">
+                               
+                            </div>
+                            <div class="mt-3">
+                                <h4>{{UserBasicInfo.fname}} {{UserBasicInfo.lname}}</h4>
+                                <p class="text-secondary"  class="text-secondary mb-1">{{UserBasicInfo.title}}</p>
+                                <p class="text-secondary"  class="text-muted font-size-sm">{{UserBasicInfo.city}}, {{UserBasicInfo.country}}</p>
+                            </div>
+                        </div>
+                        <ul *ngFor="let item of sampleEmpSC ">
+                                <li class="list-inline-item"><a href="{{item.url}}"><i class="fa fa-{{item.type}}"></i></a></li>
+                        </ul>
+                        <div>
+                            <h5>Key Skills</h5>
+                            <hr>
+                            <p-chip *ngFor="let x of skillsModel.skills" label="{{ x }}" styleClass="p-mr-2 p-my-2"></p-chip>
+                        </div>
+                    </div>
+                </p-card>
+
+            </div>
+        </div>
+        <!--RightSideBody-->
+        <div class="col-xl-9 col-lg-8  my-4" >
+            <p-card>
+                <!--Basic Information-->
+                <h3 class="pl-3 ">Basic Information</h3>
+                <hr />
+                <div class="row m-3">
+                    <div class="col-lg-6 col-md-6">
+                        <h5 class = "mb-0" >Your Name:</h5>
+                        <p class="text-secondary" >{{UserBasicInfo.fname}} {{UserBasicInfo.lname}}</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <h5 class = "mb-0" >Professional Title:</h5>
+                        <p class="text-secondary" >{{UserBasicInfo.title}}</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 py-3">
+                        <h5 class = "mb-0" >Age:</h5>
+                        <p class="text-secondary" >{{UserBasicInfo.birthdate | date}}</p>
+                    </div>
+                    <div class="col-lg-12 col-md-12 py-3">
+                        <h5 class = "mb-0" >Description</h5>
+                        <p class="text-secondary" >{{UserBasicInfo.summary}}</p>
+                    </div>
+                </div>
+                <!--Contact Information-->
+                <h3 class="pl-3 pt-3">Contact Information</h3>
+                <hr />
+                <div class="row m-3">
+                    <div class="col-lg-6 col-md-6">
+                        <h5 class = "mb-0" >Phone:</h5>
+                        <p class="text-secondary" >{{UserBasicInfo.phone}}</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <h5 class = "mb-0" >Email Address:</h5>
+                        <p class="text-secondary" >{{UserBasicInfo.email}}</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 py-3">
+                        <h5 class = "mb-0" >Country:</h5>
+                        <p class="text-secondary" >{{UserBasicInfo.country}}</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 py-3">
+                        <h5 class = "mb-0" >City:</h5>
+                        <p class="text-secondary" >{{UserBasicInfo.city}}</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 ">
+                        <h5 class = "mb-0" >Full Address:</h5>
+                        <p class="text-secondary" >{{UserBasicInfo.address}}</p>
+                    </div>
+                </div>
+                <!--Employment Information-->
+                <h3 class="pl-3 pt-3">Employment</h3>
+                <hr />
+                <div class="row m-3">
+                    <div *ngFor="let item of UserEmpArr" class="col-lg-6 col-md-6 py-3">
+                        <h5>{{item.title}}</h5> 
+                        <p class="mb-0 text-secondary">Company: {{item.company}}</p>
+                        <span class="mb-0 text-secondary pe-4">From: {{item.from|date}}</span>
+                        <span class="mb-0 text-secondary">TO: {{item.to |date}}</span>
+                        <p class="mb-0 text-secondary">{{item.description}}</p>
+                    </div>
+                </div>
+                <!--Education Information-->
+                <h3 class="pl-3 pt-3">Education</h3>
+                <hr />
+                <div class="row m-3">
+                    <div *ngFor="let item of UserEduArr" class="col-lg-6 col-md-6 py-3">
+                        <h5>{{item.university}}</h5> 
+                        <p class="mb-0 text-secondary">{{item.typeOfEducation}}</p>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+    </div>
+</div>

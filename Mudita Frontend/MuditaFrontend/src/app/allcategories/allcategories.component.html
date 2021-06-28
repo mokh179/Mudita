@@ -1,0 +1,64 @@
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="margin-top: 100px; ">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner ">
+        <div class="carousel-item active " data-bs-interval="1500">
+            <img src="../../assets/AllCategoriesSlide/category1.jpg" class="d-block w-100 " alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>Find Your Category </h3>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+            <img src="../../assets/AllCategoriesSlide/category2.png" class="d-block w-100 " alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>More Than 10 Categories </h3>
+            </div>
+        </div>
+        <div class="carousel-item ">
+            <img src="../../assets/AllCategoriesSlide/category3.jpg" class="d-block w-100 " alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>Find Your Self !</h3>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <h1 class="headstyle "><span class="badge badge-secondary text-dark rounded-pill col-lg-4 " id="sp">OUR CATEGORIES</span></h1>
+
+        <div class="col-lg-3" *ngFor="let category of categoryList | paginate: {itemsPerPage: 8, currentPage: cp }">
+            <div class="a-box">
+                <a [routerLink]="['/companiesCategory',category.cat_Id]" class="link1">
+                    <div class="img-container">
+                        <div class="img-inner">
+                            <div class="inner-skew">
+                                <img src="../../assets/Categories/{{category.cat_Desc}}.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-container">
+                        <h3>{{category.cat_Desc}}</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center pt-5">
+            <pagination-controls (pageChange)="cp=$event"></pagination-controls>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,38 @@
+.btn-control {
+  display: flex;
+  justify-content: flex-end;
+}
+.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.btn-primary {
+  background: #e86244;
+  border: #e86244;
+}
+
+.btn-primary:hover {
+  background: #e9411c;
+  border: #e9411c;
+}
+
+.btn-success{
+  background-color: #19c176;
+  border: #19c176;
+}
+.btn-success:hover{
+  background-color: #099c5a;
+  border: #099c5a;
+}
+
+.spanposition {
+  background-color: #69819d;
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+}
+

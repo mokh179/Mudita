@@ -1,0 +1,206 @@
+<div class="container">
+    <div class="row">
+        <!--LeftSideBody-->
+        <div class="col-xl-3 col-lg-4 my-5">
+            <div class="sticky-top">
+                <p-card>
+                    <div class="candidate-info">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <div class="userimg">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="rounded-circle"
+                                    width="145">
+                                <div class="upload-link" title="update" data-toggle="tooltip" data-placement="right">
+                                    <input type="file" class="update-flie">
+                                    <i class="pi pi-camera"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <h3>@Company</h3>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li>
+                                <a routerLink="/company/companyprofile">
+                                    <i class="pi pi-user"></i>
+                                    <span>Profile</span></a>
+                            </li>
+                            <li>
+                                <a routerLink="/company/postajob">
+                                    <i class="pi pi-file"></i>
+                                    <span>post A Job</span></a>
+                            </li>
+                            <li>
+                                <a routerLink="/company/managejobs">
+                                    <i class="pi pi-inbox"></i>
+                                    <span>Manage Job</span></a>
+                            </li>
+                            <li>
+                                <a routerLink="/company/resume">
+                                    <i class="pi pi-id-card"></i>
+                                    <span>Resume</span></a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="pi pi-unlock"></i>
+                                    <span>Change Password</span></a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="pi pi-sign-out"></i>
+                                    <span>Logout</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </p-card>
+
+            </div>
+        </div>
+        <!--RightSideBody-->
+        <div class="col-xl-9 col-lg-8 my-5">
+            <p-card>
+                <form>
+                    <h3 class="pl-3">Manage Jobs&nbsp;</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group ">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table id="mytable" class="table table-bordred table-striped">
+                                                    <thead>
+                                                        <th>Job Title</th>
+                                                        <th>Job Type</th>
+                                                        <th>Applicants No.</th>
+                                                        <th>Status</th>
+                                                        <th colspan="3">Operations</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let person of personList | paginate: {itemsPerPage: 6, currentPage: cp }">
+                                                            <td>{{person.id}}</td>
+                                                            <td>{{person.name}}</td>
+                                                            <!-- No. of Applicants -->
+                                                            <td>{{person.age}}</td>
+                                                            <td>{{person.name}}</td>
+                                                            <td>
+                                                                <P data-placement="top" data-toggle="tooltip"
+                                                                    title="Delete">
+                                                                    <p-confirmPopup></p-confirmPopup>
+                                                                    <button class="btn btn-xs deletebtn"
+                                                                        data-title="Delete"
+                                                                        (click)="confirm($event,person.id)"><span
+                                                                            class="glyphicon glyphicon-trash table-remove"><i
+                                                                                class="bi bi-trash"></i></span></button>
+                                                                </P>
+                                                            </td>
+                                                            <td>
+                                                                <p data-placement="top" data-toggle="tooltip"
+                                                                    title="Edit"><button class="btn btn-xs editbtn"
+                                                                        data-title="Edit" data-bs-toggle="modal"
+                                                                        data-bs-target="#edit"><span
+                                                                            class="glyphicon glyphicon-edit"><i
+                                                                                class="bi bi-pencil-square"></i></span></button>
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <a routerLinkActive="active"
+                                                                    routerLink="/company/resume" data-placement="top"
+                                                                    data-toggle="tooltip" title="Applicants Resumes">
+                                                                    <button class="btn btn-xs AppResumeDetails"
+                                                                        data-title="Applicants Resumes"
+                                                                        data-toggle="modal"
+                                                                        data-target="#Applicants Resumes"><span
+                                                                            class="glyphicon glyphicon-list-alt"><i
+                                                                                class="bi bi-card-list"
+                                                                                aria-hidden="true"></i>
+                                                                        </span>
+                                                                    </button></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <pagination-controls class="pagination text-end" (pageChange)="cp=$event"></pagination-controls>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade large-modal col-lg-12" id="edit" tabindex="-1" role="dialog"
+                                    aria-labelledby="edit" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" style="color:#19c176" id="editHeading">Edit Your
+                                                    Details</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="col-xl-12">
+                                                    <p-card>
+                                                        <form>
+                                                            <div class="row m-3">
+                                                                <div class="col-lg-6 col-md-6">
+                                                                    <div class="form-group">
+                                                                        <h6>Job Title</h6>
+                                                                        <input [disabled]="x" type="text" pInputText
+                                                                            placeholder="Job Title"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-6">
+                                                                    <div class="form-group">
+                                                                        <h6>Job Type</h6>
+                                                                        <input [disabled]="x" type="text" pInputText
+                                                                            placeholder="Job Type"/>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-lg-6 col-md-6 py-3 ">
+                                                                    <div class="form-group ">
+                                                                        <h6 for="emailAddrees ">Founded Date</h6>
+                                                                        <p-calendar disabled="x"
+                                                                            [style]="{ 'width': '100%'} "
+                                                                            inputId="emailAddrees " [(ngModel)]="date1 "
+                                                                            [ngModelOptions]="{standalone: true} ">
+                                                                        </p-calendar>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-12 col-md-12 py-3 ">
+                                                                    <div class="form-group ">
+                                                                        <h6 for="exampleFormControlTextarea1 ">
+                                                                            Description</h6>
+                                                                        <textarea [disabled]="x" [rows]="3 "
+                                                                            pInputTextarea></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 ">
+                                                                <div class="form-group ">
+                                                                    <button [style]="{ 'width': '30%'} "
+                                                                        [hidden]="HideEditBtn" (click)="onEdit()"
+                                                                        class="btn p-button-warning " pButton
+                                                                        type="submit " label="Edit"></button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </p-card>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer ">
+                                                <button type="button" class="btn updatebtn" data-bs-dismiss="modal"
+                                                    [hidden]="HideSaveBtn" (click)="onSave()" pButton
+                                                    type="submit "><span
+                                                        class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                                                <button type="button" class="btn closebtn" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>                                    
+                                    </div>                                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </p-card>
+        </div>
+    </div>
+</div>

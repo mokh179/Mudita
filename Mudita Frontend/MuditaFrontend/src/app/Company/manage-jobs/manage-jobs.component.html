@@ -1,0 +1,85 @@
+<p-toast [style]="{'margin-top':'70px'}"></p-toast>
+
+<div *ngIf="pagevisable">
+  <p-table #dt [value]="jobCompanyArr" [rows]="8" [paginator]="true" [rowHover]="true" dataKey="vacany.vacancyId"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="text-center">Title</th>
+        <th class="text-center">Publish Date</th>
+        <th class="text-center"># of Applicants</th>
+        <th class="text-center"># of views</th>
+        <th class="text-center"># of selected</th>
+        <th class="text-center"># of Rejected</th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-job>
+      <tr>
+        <td class="text-center">{{job.title}}</td>
+        <td class="text-center">{{job.publishDate | date}}</td>
+        <td class="text-center">{{job.noApplicants }}</td>
+        <td class="text-center">{{job.noViewed}}</td>
+        <td class="text-center">{{job.noselected}}</td>
+        <td class="text-center">{{job.noRejected}}</td>
+        <td>
+          <!-- <button pButton pRipple icon="pi pi-file" class="p-button-rounded p-button-warning p-mr-2 p-mb-2"  routerLink="resume/{{job.vacancyId}}"></button> -->
+          <button pButton pRipple icon="pi pi-file" class="p-button-rounded p-button-warning p-mr-2 p-mb-2"  (click)= "Rsume()" routerLink="resume/{{job.vacancyId}}"></button>
+          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2 p-mb-2"
+            (click)="Add(job.vacancyId)"></button>
+          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+            (click)="confirm($event,job.vacancyId)"></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{jobCompanyArr ? jobCompanyArr.length : 0 }} Vacancies.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog [contentStyle]="{'overflow':'visible'}" header="Vacancey Edit" [(visible)]="mangeeditDialog"
+  [style]="{width: '40vw'}" [baseZIndex]="1030">
+  <div class="row m-3">
+    <div class="col-lg-12 col-md-12">
+      <h6>Title</h6>
+      <p-dropdown [options]="categories" optionValue="cat_Id" [editable]="true" [(ngModel)]="vacany.jobTitle"
+        name="jobCat_Id" optionLabel="jobCat_Desc" placeholder="Select Tilte "></p-dropdown>
+    </div>
+    <div class="col-lg-12 col-md-12 py-3 ">
+      <h6>Job Type</h6>
+      <p-autoComplete [(ngModel)]="vacany.jobTypes" [suggestions]="resultsType" [showEmptyMessage]="true"
+        (completeMethod)="searchType($event)" name="jobTypes" [style]="{width:'100%'}" [multiple]="true">
+      </p-autoComplete>
+    </div>
+    <div class="col-lg-12 col-md-12 py-4 ">
+      <h6>Job Tags</h6>
+      <p-autoComplete [(ngModel)]="vacany.jobTags" [suggestions]="resultsskill" [showEmptyMessage]="true"
+        (completeMethod)="searchskill($event)" name="jobTags" [style]="{width:'100%'}" [multiple]="true">
+      </p-autoComplete>
+    </div>
+
+    <div class="col-lg-12 col-md-12 py-3 ">
+      <h6>Founded Date</h6>
+      <p>{{vacany.publishdate | date}}</p>
+    </div>
+    <div class="col-lg-12 col-md-12 ">
+      <h6> Description</h6>
+      <!-- <p>{{vacany.description}}</p> -->
+      <textarea [(ngModel)]="vacany.description" name="description" autoResize="autoResize"></textarea>
+    </div>
+  </div>
+
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text"
+      (click)="onSave()"></button>
+  </ng-template>
+</p-dialog>
+
+<p-confirmPopup></p-confirmPopup>
+
+<router-outlet></router-outlet>

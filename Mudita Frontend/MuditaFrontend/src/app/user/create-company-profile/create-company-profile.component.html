@@ -1,0 +1,107 @@
+
+<div class="container mt-5">
+    <div class="row main">
+        <div class="col-lg-12 pb-5">
+            <p-card>
+                <!--Basic Information-->
+                <h3>Company Information</h3>
+                <hr />
+                    <div class="row company1">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h6>Company Name</h6>
+                                <input class="form-control" type="text" id="account-name" placeholder="Company Name"
+                                    required="" [(ngModel)]="companyAdded.companyName">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Company Category</h6>
+
+                            <p-dropdown  optionh6="name" [options]="partcategories " placeholder="Select a Category" optionLabel="cat_Desc" optionValue="cat_Id" [(ngModel)]="companyAdded.category_Id">
+
+                            </p-dropdown>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row company3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h6 for="account-phone">Phone Number</h6>
+                                <input class="form-control" type="number" id="account-phone"
+                                    placeholder="+7 (805) 348 95 72" required=""  [(ngModel)]="companyAdded.phone">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h6 for="account-ln">Fax</h6>
+                                <input class="form-control" type="number" id="account-fax" placeholder="+1 323 555 1234"
+                                    required="" [(ngModel)]="companyAdded.fax">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <h6 for="account-email">WebSite</h6>
+                            <input class="form-control" type="website" id="account-website"
+                                placeholder="www.example.com" required=""  [(ngModel)]="companyAdded.website">
+                        </div>
+                    </div>
+
+
+                    <div class="col-12">
+                        <hr class="mt-2 mb-3">
+                        <div class="btnCreate">
+                            <!-- class="d-flex flex-wrap justify-content-between align-items-center" -->
+                            <button class="btn btn-style-1 btn-primary" type="button" data-toast=""
+                                data-toast-position="topRight" data-toast-type="success"
+                                data-toast-icon="fe-icon-check-circle" data-toast-title="Success!"
+                                data-toast-message="Your Company Profile is Created Successfuly."
+                                (click)="confirm1()" >Create Company
+                                Profile</button>
+                        </div>
+                    </div>
+            </p-card>
+        </div>
+    </div>
+</div>
+
+<!-- <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog> -->
+
+ <!-- Modal -->
+ <div class="modal fade" data-backdrop="static" data-keyboard="false" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                <i class="fas fa-exclamation-triangle"></i> Alert
+              </h5>
+
+              <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+          </div>
+          <div class="modal-body text-danger">
+
+            <h5 class="headlines">You need to logout to update your profile changes</h5>
+
+          </div>
+
+          <div class="modal-footer">
+              <button type="button" class="btn btnSubmit" data-bs-dismiss="modal" (click)="logout()">
+    Submit </button>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+<p-confirmDialog #cd [style]="{width: '50vw'}" [baseZIndex]="1000">
+  <ng-template pTemplate="header">
+      <h3>Alert</h3>
+  </ng-template>
+  <ng-template pTemplate="footer">
+      <button type="button" class="btn btn-primary" (click)="cd.accept()"><i class="pi pi-check"></i> Logout</button>
+  </ng-template>
+</p-confirmDialog>
+

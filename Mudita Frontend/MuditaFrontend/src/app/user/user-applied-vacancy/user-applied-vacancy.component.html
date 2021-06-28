@@ -1,0 +1,77 @@
+<div *ngFor="let i of jobappliedArr | paginate: {itemsPerPage: 4, currentPage: cp }" class="con">
+    <div class="con-tooltip right">
+        <div class="card mb-3 ">
+            <div class="row g-0">
+                <span class="badge badge-secondary  spanposition" *ngIf="!i.vacancyState">Closed</span>
+                <div class="col-md-4">
+                    <img *ngIf="i.companyImage != null" src="https://localhost:44352/{{i.companyImage}}" class="img-fluid rounded-start" alt="i.companyName">
+                    <img *ngIf="i.companyImage == null" src="../../assets/company.jpg" class="img-fluid rounded-start" alt="i.companyName">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div class="row ">
+                            <div class="position-relative p-0">
+                                <div class="position-absolute top-0 end-0"> <button type="button" class="btn btnsize"
+                                        (click)="withDraw(i.vacancyId)"><i
+                                            class="fas fa-times fa-lg closesize"></i></button></div>
+                            </div>
+                            <div class="col-md-9 contentposition">
+                                <h4>{{i.title}}</h4>
+                                <h6 class="text-secondary">{{i.companyName}}</h6>
+                                <h6>Applied Date</h6>
+                                <p class="text-secondary">{{i.appliedDate | date}}</p>
+                                <span class="badge bg-secondary">{{i.state}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tooltip ">
+                <div class="row">
+                    <h4>{{i.title}}</h4>
+                    <h6 class="text-secondary">{{i.companyName}}</h6>
+                    <h6>Publish Date</h6>
+                    <p class="text-secondary">{{i.publishDate | date}}</p>
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="vl">
+                                    <p class="text-secondary"><span class="text-secondary">{{i.noApplicants}}</span> of
+                                        Applicants
+                                    </p>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div>
+                                    <p class="text-secondary"><span class="text-secondary">{{i.noViewed}}</span> of
+                                        views
+                                    </p>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="vl">
+                                    <p class="text-secondary"><span class="text-secondary">{{i.noselected}}</span> of
+                                        Applicants in consideration</p>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="text-secondary"><span class="text-secondary">{{i.noRejected}}</span> of Not
+                                    selected
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="d-flex justify-content-center pt-3" *ngIf="jobappliedArr.length!=0">
+        <pagination-controls (pageChange)="cp=$event"></pagination-controls>
+    </div>

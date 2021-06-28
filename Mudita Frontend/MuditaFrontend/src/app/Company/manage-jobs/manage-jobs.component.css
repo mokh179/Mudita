@@ -1,0 +1,73 @@
+.container {
+    margin-top: 4.5%;
+  }
+table th tr td{
+    justify-content: center;
+}
+
+h4
+{
+  margin:0rem;
+  font-size:1.4rem;
+  font-weight:700;
+}
+.deletebtn{
+    background-color: #e86244; 
+    color:white;
+}
+.editbtn
+{
+    background-color: #19c176; 
+    color:white; 
+}
+.AppResumeDetails
+{
+    background-color: #69819d; 
+    color:white; 
+
+}
+thead,tr,th,td
+{
+    justify-content: center;
+    text-align: center;
+}
+/* .app-modal-window .modal-dialog {
+    width: 1000px;
+  }
+  .large-Modal .modal-dialog{
+    height: 400px;
+    width:700px; 
+    margin: auto;
+    position: absolute;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  } */
+   /* .modal-dialog{
+
+  background-color: #232323; */
+  /* width: max-content;
+
+  } */
+  .updatebtn{
+    width: 30%; 
+    background-color: #19c176;
+    color: #fff;
+  }
+  .closebtn{
+    background-color: #e86244
+  }
+  .table-responsive{
+    margin-top:-80px;
+  }
+
+
+/**/
+textarea
+{
+  border:1px solid #999999;
+  width:100%;
+  margin:5px 0;
+  padding:3px;
+}

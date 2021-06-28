@@ -1,0 +1,168 @@
+<div class="AM back">
+
+
+  <br>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="tt"> Find your opportunity !</h3>
+        <div class="card ddd">
+          <div class="col-sm-12 ">
+            <div class="card-body caard">
+
+              <section class="search-sec">
+                <div class="container">
+                  <form action="#" method="post" novalidate="novalidate">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-3 col-sm-12">
+
+                            <select class="form-control search-slt " #searchCountry
+                              (change)='selectcountry(searchCountry.value)' name="country" [(ngModel)]="idcountry">
+                              <option hidden value="" disabled selected>Select Country </option>
+                              <option class='option' *ngFor='let country of countrysearchlist'
+                                [value]="country.country_id">
+                                {{country.country_Name}}</option>
+                            </select>
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-12 ">
+                            <select class="form-control search-slt" name="city" [(ngModel)]="idcity">
+                              <option hidden value="" disabled selected>Select City</option>
+                              <option class='option' *ngFor="let city of citysearchlist " [value]="city.city_Id">
+                                {{city.city_Name}}</option>
+                            </select>
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-12">
+                            <select class="form-control search-slt" #selctCategory name="country" [(ngModel)]="idcat">
+                              <option hidden value="" disabled selected>Select Category</option>
+                              <option class='option' *ngFor='let category of partcategories' [value]="category.cat_Id">
+                                {{category.cat_Desc}}</option>
+                            </select>
+
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-12 ">
+                            &nbsp;
+                            &nbsp;
+                            <button type="button" class="btn btn-primary wrn-btn " (click)="GoToCompanies()">Search <i
+                                class="bi bi-search"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container py-5">
+  <div class="row text-center text-white">
+    <div class="col-lg-8 mx-auto">
+
+      <p class="lead mb-0"></p>
+
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <h1 class="text-center pt-4 "> Find By Category </h1>
+
+    <div class="col-lg-3" *ngFor="let category of partcategories | slice:0:4 let i=index">
+      <div class="a-box">
+        <a [routerLink]="['/companiesCategory',category.cat_Id]" class="link1 " >
+          <div class="img-container">
+            <div class="img-inner">
+              <div class="inner-skew">
+                <img src="../../assets/Categories/{{category.cat_Desc}}.jpg">
+              </div>
+            </div>
+          </div>
+          <div class="text-container">
+            <h3>{{category.cat_Desc}}</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="viewall  fa fa-arrow-right rounded-pill" (click)="allCategories() "> </button>
+
+
+<div class="container aa">
+<div class="row" id="rrr">
+
+  <div class=" sora ">
+      <h1 class="hh "><span class="badge badge-secondary  rounded-pill col-lg-3 " id="sp">OUR SERVICES</span></h1>
+      <div class="container py-5">
+          <div class="row text-center text-white">
+              <div class="col-lg-8 mx-auto">
+
+                  <p class="lead mb-0"></p>
+
+              </div>
+          </div>
+      </div>
+
+
+      <div class="container ">
+          <div class="row text-center">
+
+
+              <div class="col-xl-4 col-sm-6  iconhh ">
+
+                  <div class="rounded  py-5 " id="dd">
+                      <a [routerLink]="['/allCategories']" class="link1">
+                        <i class="far fa-star fa-5x iconn    mb-3 " style="color: #e86244;"></i>
+                          <h5 class="mb-0 text-white">Rate</h5>
+                          <span class="small text-uppercase text-muted"></span>
+                      </a>
+                  </div>
+
+              </div>
+              <div class="col-xl-4 col-sm-6   iconhh">
+                  <a>
+                      <div class=" rounded  py-5 " id="dd">
+                          <a [routerLink]="['/viewjobs']" class="link1">
+                              <i class=" fas fa-briefcase fa-5x iconn mb-3 " style="color: #e86244; "></i>
+                              <h5 class="mb-0 text-white ">Find A Job</h5>
+                              <span class="small text-uppercase text-muted "></span>
+                          </a>
+
+                      </div>
+                  </a>
+              </div>
+              <div class="col-xl-4 col-sm-6 iconhh ">
+                  <a>
+                      <div class=" rounded py-5 " id="dd ">
+                          <a [routerLink]="['/searchcompare'] " class="link1 ">
+                              <i class="fas fa-balance-scale-right fa-5x iconn mb-3 " style="color: #e86244; "></i>
+                              <h5 class="mb-0 text-white "> Compare Companies</h5>
+                              <span class=" small text-uppercase text-muted "></span>
+                          </a>
+                      </div>
+                  </a>
+              </div>
+
+          </div>
+
+      </div>
+  </div>
+</div>
+</div>

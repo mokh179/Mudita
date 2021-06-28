@@ -1,0 +1,80 @@
+<p-toast [style]="{'margin-top':'70px'}"></p-toast>
+<div class="container">
+    <div class="row">
+        <!--LeftSideBody-->
+        <div class="col-xl-3 col-lg-4 ">
+            <div class="sticky-top">
+                <p-card>
+                    <div class="candidate-info">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <div class="userimg">
+                                <img [src]="photos" class="img">
+                                 <div class="upload-link" title="update" data-toggle="tooltip" data-placement="right">
+                                    <input type="file" #file placeholder="Choose file" class="update-flie"
+                                        accept="image/png, image/jpeg" (change)="uploadFile(file.files)">
+                                    <i class="pi pi-upload"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <h4>{{UserBasicInfo.fname}} {{UserBasicInfo.lname}}</h4>
+                                <p class="text-secondary mb-1">{{UserBasicInfo.title}}</p>
+                                <p class="text-muted font-size-sm">{{UserBasicInfo.city}}, {{UserBasicInfo.country}}</p>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li><a routerLinkActive="active" routerLink="profile">
+                                    <i class="pi pi-user"></i>
+                                    <span>Profile</span></a>
+                            </li>
+                            <li><a routerLinkActive="active" routerLink="/userresume/{{UserBasicInfo.userID}}">
+                                    <i class="pi pi-file"></i>
+                                    <span>My Resume</span></a>
+                            </li>
+                            <li><a routerLinkActive="active" routerLink="vacancy">
+                                    <i class="pi pi-shopping-cart"></i>
+                                    <span>Applied Job</span></a>
+                            </li>
+                            <li><a routerLinkActive="active" routerLink="question">
+                                <i class="far fa-question-circle"></i>
+                                <span>Questions</span></a>
+                            </li>
+
+                            <li><a routerLinkActive="active" routerLink="CreateCompany" *ngIf="!Editable">
+                              <i class="far fa-plus-square"></i>
+                              <span>Create Company</span></a>
+                           </li>
+                           <li><a routerLinkActive="active" routerLink="/company/companyprofile/{{companyId}}" *ngIf="Editable">
+                            <i class="far fa-building"></i>
+                            <span>My Company</span></a>
+                         </li>
+
+                            <li><a routerLinkActive="active" routerLink="ChangePassword">
+                                    <i class="pi pi-unlock"></i>
+                                    <span>Change Password</span></a>
+                            </li>
+                            <li class="Deactivate"><a routerLinkActive="active" >
+                                <i class="far fa-minus-square"></i>
+                                <!-- (click)="deleteProduct($event)" -->
+                                <span (click)="deleteProduct($event)">Deactivate Account</span></a>
+                            </li>
+                            <li class="Deactivate"><a routerLinkActive="active" (click)="removeCompany($event)" *ngIf="Editable"4-6+>
+                              <i class="far fa-trash-alt"></i>
+                              <span>Deactivate Company</span></a>
+                           </li>
+                            <p-confirmPopup [baseZIndex]="200" ></p-confirmPopup>
+                            <li><a routerLinkActive="active" (click)="logout()">
+                                    <i class="pi pi-sign-out"></i>
+                                    <span>Logout</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </p-card>
+
+            </div>
+        </div>
+        <!--RightSideBody-->
+        <div class="col-xl-9 col-lg-8 my-4">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

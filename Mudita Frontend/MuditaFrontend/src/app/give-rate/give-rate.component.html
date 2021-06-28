@@ -1,0 +1,56 @@
+<p-button (click)="showDialog()" icon="pi pi-external-link" label="Rate US!"></p-button>
+    <p-dialog [(visible)]="display" [style]="{width: '60vw'}" [baseZIndex]="1000000" >
+                <div>
+                    <div>
+                        <h3 class="card-text text-dark fa fa-star">
+                            Rate Company
+                        </h3>
+                        <br>
+                        <div class="row text-dark">
+                            <div class="col-md-6">
+
+                                <p id="mydisplay" for="input-1" class="control-label">Salary: &nbsp; &nbsp;
+                                </p>
+                                <p-rating [(ngModel)]="rt.salrate"></p-rating>
+
+                                <p id="mydisplay" for="input-1" class="control-label">Safety: &nbsp; &nbsp;
+                                </p>
+                                <p-rating [(ngModel)]="rt.SafetyRate"></p-rating>
+                             
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <p id="mydisplay" for="input-1" class="control-label">Service: &nbsp; &nbsp;
+                                </p>
+                                <p-rating [(ngModel)]="rt.ServiceRate"></p-rating>
+                                <p id="mydisplay" for="input-1" class="control-label">Work enviroment: &nbsp; &nbsp;
+                                </p>
+                                <p-rating [(ngModel)]="rt.WorkEnvironmentRate"></p-rating>
+                            </div>
+                           
+                            <br/>
+                            <textarea placeholder="Enter Your Comment!" id="area" rows="4" cols="10" [(ngModel)]="rt.Rate_Desc" pInputTextarea></textarea>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+
+
+        <ng-template pTemplate="footer">
+            <p-button icon="pi pi-check" (click)="rate()" label="Submit"></p-button>
+        </ng-template>
+
+    </p-dialog>
+
+    <!-- If Strength Is Less Than 0.75 -->
+    <div class="dialogstyle">
+        <p-dialog [(visible)]="test" [style]="{width: '50vw'}" [baseZIndex]="10000">
+            <div class="card dialogstyle">
+                <h1 class="card-text text-dark"><i class="far fa-frown"></i> Sorry You Can't Rate! Complete Your Profile</h1>
+                <h3> <a class="linkstyle" routerLink="/user/{{rt.user_Name}}"><i class="fas fa-user-circle"></i> My Profile</a></h3>
+            </div>
+        </p-dialog>
+    </div>
+

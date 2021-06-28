@@ -1,0 +1,43 @@
+<p-card>
+    <!--Basic Information-->
+    <h3 class="pl-3 ">Post A Job</h3>
+    <hr />
+    <div class="row m-3">
+      <div class="col-lg-6 col-md-6 ">
+        <div class="form-group ">
+          <h6>Job Title</h6>
+          <p-dropdown  optionh6="name" [options]="Jobcategories" placeholder="Select a Title" optionLabel="jobCat_Desc" optionValue="jobCat_Id" [(ngModel)]="Vacancy.jobTitle"  >
+
+          </p-dropdown>
+        </div>
+      </div>
+  
+      <div class="col-lg-6 col-md-6 ">
+        <div class="form-group">
+          <h6>Job Types</h6>
+          <p-autoComplete [(ngModel)]="saveTypes" [suggestions]="resultsType" [showEmptyMessage]="true" [dropdown]="true"
+          (completeMethod)="searchType($event)" name="skills" [style]="{width:'100%'}" [multiple]="true">
+        </p-autoComplete>
+      
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6 py-4 ">
+          <h6>Job Tags</h6>
+          <p-autoComplete [(ngModel)]="saveSkills" [suggestions]="resultsskill" [showEmptyMessage]="true" [dropdown]="true"
+            (completeMethod)="searchskill($event)" name="skills" [style]="{width:'100%'}" [multiple]="true">
+          </p-autoComplete>
+      </div>
+      <div class="col-lg-12 col-md-12 py-3 ">
+          <h6 for="exampleFormControlTextarea1 ">Job Description</h6>
+          <textarea [rows]="3 " pInputTextarea [(ngModel)]="Vacancy.description" name="description"></textarea>
+        
+      </div>
+
+      <div class="col-lg-8 col-md-8 pt-5 ">
+        <div class="form-group ">
+          <button [style]="{ 'width': '30%'}" class="btn pButtonn " pButton  label="POST" (click)="PostAjob()"></button>
+        </div>
+      </div>
+    </div>
+</p-card>

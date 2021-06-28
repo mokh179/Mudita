@@ -1,0 +1,137 @@
+
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.heading-container {
+  text-align: center;
+}
+
+.heading {
+  font-weight: 600;
+}
+
+
+.main-container {
+  padding: 30px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap:nowrap;
+  /* justify-content: space-between;*/
+}
+
+.smallcard{
+  margin-top:18px;
+  padding-left: 10px;
+  height:12.3%;
+  padding-top: 9px;
+  display: grid;
+  grid-template-rows: 7px 0px 1fr 0px;
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+
+}
+.bigcard {
+  margin: 30px;
+  padding: 10px;
+  margin-top: 0.9rem;
+  /* width: 400px; */
+  /* min-height: 80px; */
+  display: grid;
+  grid-template-rows: 20px 30px 1fr 30px;
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+}
+.bigcardend{
+  /* width: 695px; */
+  /* min-height: 80px; */
+  /* padding: 10px; */
+  /* margin: 20px; */
+  /* display: grid; */
+  /* grid-template-rows: 20px 10px 1fr 20px; */
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  /* transition: all 0.5s; */
+  text-align:center;
+}
+.titlebig{
+  font-size: 30px;
+  color:  rgb(0, 0, 0) !important;
+  font-weight: bolder;
+}
+.titlesmall{
+  font-size: 25px;
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+
+}
+.card:hover {
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+  transform: scale(1.01);
+}
+.card__iconbig {
+
+  font-size: 60px;
+  color: #3d3b3b;
+  margin-bottom: 3rem;
+ text-align: center;
+}
+.card__iconsmall {
+
+  font-size: 40px;
+  color: #07070796;
+  margin-bottom: 3rem;
+ text-align: center;
+}
+
+.card__numbig{
+  grid-row: 3/4;
+  font-weight: 400;
+  color:white;
+  margin-top: 3rem;
+  text-align: center
+}
+
+.card__numsmall{
+  grid-row: 3/4;
+  font-weight: 400;
+  margin-top: 2rem;
+  text-align: center
+}
+
+
+ .card-1 {
+  background: #eb795f;
+  /* background: #e4e3e3; */
+  border-color:#eb795f;
+  height:26.5%;
+  color:  rgb(202, 192, 192) !important;
+
+}
+.card-11 {
+  background: #e7f6fd;
+  color: #3f3c3c;
+
+
+}
+.card-12 {
+  color: #ffffff;
+  /* background: #879db8; */
+
+  background: #5e6e8196;
+  border-color:#879db8;
+
+}
+
+
+
+@media (max-width: 1600px) {
+  .card-container {
+    justify-content: center;
+  }
+}

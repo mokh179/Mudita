@@ -1,0 +1,59 @@
+<p-card>
+  <form>
+
+    <!--Basic Information-->
+    <div class="d-flex justify-content-between ">
+      <h3 class="pl-3 ">Manage Company</h3>
+   
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group ">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <table id="mytable" class="table table-bordred table-striped">
+                    <thead>
+                      <th>Company Name</th>
+                      <th>Operations</th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let Companies of allCompanies | paginate: {itemsPerPage: 5, currentPage: cp }">
+
+                        <td>{{Companies.companyName}}</td>
+                        <td>
+                          <P data-placement="top" data-toggle="tooltip" title="Delete">
+                            <p-confirmPopup></p-confirmPopup>
+                            <button class="btn btn-xs deletebtn" data-title="Delete"
+                              (click)="confirm($event,Companies.companyID)"><span
+                                class="glyphicon glyphicon-trash table-remove"><i
+                                  class="bi bi-trash"></i></span></button>
+
+                          </P>
+                        </td>
+
+
+
+                      </tr>
+
+
+                    </tbody>
+
+                  </table>
+                  <pagination-controls (pageChange)="cp=$event"></pagination-controls>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </form>
+</p-card>

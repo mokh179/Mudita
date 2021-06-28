@@ -1,0 +1,136 @@
+<p-toast [style]="{'margin-top':'70px'}"></p-toast>
+          <p-card>
+            <!--Basic Information-->
+            <h3 class="pl-3 ">Basic Information</h3>
+                <hr />
+            <div class="row m-3">
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <h6>Company Name</h6>
+                        <input [disabled]="x" type="text" pInputText placeholder="Company Name" [(ngModel)]="companyProf.companyName"/>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <h6>Company Email</h6>
+                        <input [disabled]="x" type="email" pInputText placeholder="info@example.com" [(ngModel)]="companyProf.email"/>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 py-3">
+                    <div class="form-group">
+
+                        <h6>Website</h6>
+
+                        <input [disabled]="x" type=" text " pInputText placeholder="WebsiteLink " [(ngModel)]="companyProf.website"/>
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 py-3 ">
+                    <div class="form-group ">
+                        <h6 for="foundeddate">Founded Date</h6>
+                        <!-- <p-calendar dateFormat="mm-dd-yy" inputId="dateformat" [(ngModel)]="companyProf.foundedDate" ></p-calendar> -->
+                        <input type="datetime-local" id="foundeddate" name="foundeddate" [disabled]="x" [style]="{ 'width': '100%'} " [(ngModel)]="companyProf.foundedDate">
+
+                        <!-- <p-calendar [disabled]="x" [style]="{ 'width': '100%'} " inputId="foundeddate " [(ngModel)]="companyProf.foundedDate"></p-calendar> -->
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 ">
+                    <div class="form-group ">
+                        <h6>Category</h6>
+                        <!-- <p-dropdown [options]="cities " [(ngModel)]="selectedCity " optionh6="name "></p-dropdown> -->
+                        <p-dropdown [disabled]="x" optionh6="name" [options]="categories" optionLabel="cat_Desc" optionValue="cat_Id" [(ngModel)]="companyProf.categoryID">
+
+                        </p-dropdown>
+                        <!-- <select name="Category" [(ngModel)]="companyProf.categoryID">
+                          <option selected [value]="companyProf.category">Select</option>
+                          <option class='option' *ngFor="let cat of categories"  [value]="cat.categoryId" > {{cat.cat_Desc}} </option>
+                        </select> -->
+                      </div>
+                </div>
+                <div class="col-lg-6 col-md-6 ">
+                    <div class="form-group ">
+                        <h6>Phone</h6>
+                        <input [disabled]="x" type=" text " pInputText placeholder="phone" [(ngModel)]="companyProf.phone" />
+
+                        <!-- <p-inputMask [disabled]="x" mask="(999) 999-999-9999 "  [(ngModel)]="companyProf.phone"></p-inputMask> -->
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 ">
+                    <div class="form-group ">
+                        <h6>Fax</h6>
+                        <input [disabled]="x" type=" text " pInputText placeholder="Fax" [(ngModel)]="companyProf.fax" />
+
+                        <!-- <p-inputMask [disabled]="x" mask="-* " placeholder="9999-999" [(ngModel)]="companyProf.fax"></p-inputMask> -->
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 py-3 ">
+                    <div class="form-group ">
+                        <h6 for="exampleFormControlTextarea1 ">Description</h6>
+                        <textarea [disabled]="x" [rows]="3 " pInputTextarea [(ngModel)]="companyProf.description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!--Contact Information-->
+            <h3 class="pl-3 pt-3 ">Location Information</h3>
+            <hr />
+            <div class="row m-3 ">
+
+                <div class="col-lg-12 col-md-12 py-3 ">
+                    <!-- <div class="card"> -->
+                    <div class="card-body">
+                        <div id="table" class="table-editable">
+                            <table class="table table-responsive-md  text-center">
+                                <tr>
+                                    <th class="text-center">Country</th>
+                                    <th class="text-center">City</th>
+                                </tr>
+                                <tr *ngFor="let co of this.companyProf.countriesID; let i=index">
+                                    <td>
+                                        <h5 *ngIf="Econ">{{countryNames[i]}}</h5>
+                                        <p-dropdown [disabled]="Econ" optionh6="name"  [options]="countrylist" optionLabel="country_Name" optionValue="country_id" [(ngModel)]="cont[i]" (onChange)="selectChangeHandler(cont[i])" *ngIf="!Econ"></p-dropdown>
+                                    </td>
+
+                                    <td>
+                                       <h5 *ngIf="Econ">{{citisName[i]}}</h5>
+                                      <p-dropdown [disabled]="Econ" optionh6="name" [options]="citylist" optionLabel="city_Name" optionValue="city_Id" [(ngModel)]="citis[i]" *ngIf="!Econ"></p-dropdown>
+                                  </td>
+                                    <td>
+                                     <span class="table-remove">
+                                    <button [hidden]="!Econ" type="button" class="fa fa-edit btn btn-danger rounded-pill" mdbBtn (click)="selectChangeHandler(cont[i])"></button>
+                                  </span>
+                                  <span class="table-remove">
+                                    <button [hidden]="Econ" type="button" class="fa fa-plus-square btn btn-danger rounded-pill" mdbBtn (click)="Save(cont[i],citis[i],ocountries[i],ocitis[i])"></button>
+                                  </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Social Media Link -->
+            <h3 class="pl-3 pt-3 ">Social Link</h3>
+            <hr />
+            <div class="row m-3 ">
+                <div class="col-lg-6 col-md-6 ">
+                    <div class="form-group ">
+                        <h6>Facebook</h6>
+                        <input [disabled]="x" type="url " pInputText placeholder="info@example.com " [(ngModel)]="companyProf.faceProfile"/>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 py-3 ">
+                    <div class="form-group ">
+                        <h6>Linkedin</h6>
+                        <input [disabled]="x" type="url " pInputText placeholder="info@example.com" [(ngModel)]="companyProf.linkedProfile"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 ">
+                <div class="form-group ">
+                    <button [style]="{ 'width': '30%'} " [hidden]="HideSaveBtn" (click)="onSave()" class="btn p-button-warning " pButton type="submit " label="Save Update "></button>
+                    <button [style]="{ 'width': '30%'} " [hidden]="HideEditBtn" (click)="onEdit()" class="btn p-button-warning " pButton type="submit " label="Edit"></button>
+
+                </div>
+            </div>
+    </p-card>
